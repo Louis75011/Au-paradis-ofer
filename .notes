@@ -1,0 +1,49 @@
+### Scripts de confort (dev)
+
+#### Frontend (Next.js)
+
+```powershell
+pnpm dev       # Next dev
+pnpm build     # Next build
+pnpm lint      # ESLint + Stylelint
+pnpm test      # Vitest
+pnpm storybook # Storybook
+```
+
+#### Backend (FastAPI)
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+uvicorn app.main:app --reload   # (structure à venir)
+pytest
+ruff check .
+black . --check
+alembic upgrade head
+```
+
+#### Git utilisateur
+
+[core]
+    editor = code --wait   # VSCode comme éditeur par défaut (facultatif)
+    autocrlf = input       # gestion des fins de ligne (bon compromis sous Windows)
+    ignorecase = true
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    cm = commit -m
+    aa = add .
+    ca = commit -a -m
+    df = diff
+    lg = log --oneline --graph --decorate --all
+    pl = pull --rebase
+    ps = push
+    p = push
+    undo = reset --soft HEAD~1
+    amend = commit --amend --no-edit
+    acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f"
+    sw = switch
+    cob = checkout -b
+
+👉 Ces commandes sont vos raccourcis pratiques pour lancer le frontend, le backend, l'outil de versioning git, les tests et les outils de qualité.

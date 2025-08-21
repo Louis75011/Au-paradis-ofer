@@ -1,0 +1,46 @@
+# --- Node / Next.js ---
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/.storybook/out/
+frontend/.turbo/
+frontend/.cache/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Environnements locaux
+frontend/.env*
+!frontend/.env.example
+
+# Test coverage
+frontend/coverage/
+frontend/.vitest/
+
+# --- Python / FastAPI ---
+api/__pycache__/
+api/.pytest_cache/
+api/.mypy_cache/
+api/.ruff_cache/
+api/.coverage
+api/htmlcov/
+
+# Virtual env
+.venv/
+api/.venv/
+apps/api/.venv/
+venv/
+ENV/
+
+# Environnements locaux
+api/.env*
+!api/.env.example
+
+# --- Global ---
+*.DS_Store
+Thumbs.db
+
+# Notes perso / dev
+_notes/
