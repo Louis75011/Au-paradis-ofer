@@ -8,7 +8,6 @@ pnpm build     # Next build
 pnpm lint      # ESLint + Stylelint
 pnpm test      # Vitest
 pnpm storybook # Storybook
-# SERVEUR uvicorn app.main:app --reload --port 8000
 ```
 
 #### Backend (FastAPI)
@@ -20,9 +19,24 @@ pytest
 ruff check .
 black . --check
 alembic upgrade head
-# STORYBOOK pnpm -C apps/frontend storybook
-# SERVEUR pnpm -C apps/frontend dev
+
 ```
+
+#### Commandes Terminal
+
+# GIT
+git aa && git c "NOM" && git p
+
+# STORYBOOK
+pnpm -C apps/frontend storybook
+
+# OLCAL FRONT
+pnpm -C apps/frontend dev
+
+# LOCAL BACK
+cd \apps\api
+.venv\Scripts\Activate
+uvicorn app.main:app --reload --port 8000
 
 #### À tester
 
