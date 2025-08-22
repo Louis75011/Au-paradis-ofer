@@ -5,7 +5,7 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 
 ---
 
-## 🚀 Technologies
+## 🚀 Technologies (dernières versions — août 2025)
 
 ### Frontend
 - [Next.js](https://nextjs.org/) (React + TypeScript)

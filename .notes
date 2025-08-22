@@ -8,6 +8,7 @@ pnpm build     # Next build
 pnpm lint      # ESLint + Stylelint
 pnpm test      # Vitest
 pnpm storybook # Storybook
+# SERVEUR uvicorn app.main:app --reload --port 8000
 ```
 
 #### Backend (FastAPI)
@@ -19,7 +20,24 @@ pytest
 ruff check .
 black . --check
 alembic upgrade head
+# STORYBOOK pnpm -C apps/frontend storybook
+# SERVEUR pnpm -C apps/frontend dev
 ```
+
+#### À tester
+
+Exemple de requêtes GraphQL (tests rapides)
+Récupérer les séances
+query { sessions { id name duration_minutes price_eur } }
+
+Demander une réservation (enverra un mail simulé si SMTP non configuré)
+mutation {
+  requestBooking(input:{
+    fullName:"Jean Dupont", email:"jean@example.com", date:"2025-09-02", sessionId:1
+  }) { id status }
+}
+
+IMAGES : Cloudinary (!) ou Vercel Blob pour le stockage d’images
 
 #### Git utilisateur
 
@@ -31,8 +49,10 @@ alembic upgrade head
 [alias]
     st = status
     co = checkout
+    b = branch
     br = branch
-    cm = commit -m
+    g = grep
+    c = commit -m
     aa = add .
     ca = commit -a -m
     df = diff

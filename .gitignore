@@ -1,6 +1,5 @@
 # --- Node / Next.js ---
 node_modules/
-frontend/node_modules/
 frontend/.next/
 frontend/.storybook/out/
 frontend/.turbo/
@@ -11,9 +10,10 @@ frontend/.cache/
 npm-debug.log*
 pnpm-debug.log*
 
-# Environnements locaux
+# ENV
+.env
+.env.*
 frontend/.env*
-!frontend/.env.example
 
 # Test coverage
 frontend/coverage/
@@ -26,6 +26,7 @@ api/.mypy_cache/
 api/.ruff_cache/
 api/.coverage
 api/htmlcov/
+api/.env*
 
 # Virtual env
 .venv/
@@ -33,10 +34,6 @@ api/.venv/
 apps/api/.venv/
 venv/
 ENV/
-
-# Environnements locaux
-api/.env*
-!api/.env.example
 
 # --- Global ---
 *.DS_Store
