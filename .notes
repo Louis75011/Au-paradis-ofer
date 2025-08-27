@@ -25,10 +25,10 @@ alembic upgrade head
 #### Commandes Terminal
 
 # GIT
-git aa && git c "NOM" && git p
+git aa ; git c "NOM" ; git p
 
 # MÀJ
-git checkout main && git pull origin main && git merge dev && git push origin main
+git checkout main ; git pull origin main ; git merge dev ; git push origin main
 
 # STORYBOOK
 pnpm -C apps/frontend storybook

@@ -9,20 +9,17 @@ export default function HomePage() {
     <div className="relative">
       <HeroCarousel />
 
-      {/* Bandeau héro lisible sur le carrousel */}
-      <section className="container max-w-7xl relative z-10 py-20 md:py-28 text-white drop-shadow">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight"
-            style={{ fontFamily: "var(--font-caveat)" }}>
-          Centre d’accueil en zoothérapie
-        </h1>
-        <p className="mt-3 max-w-2xl text-lg">{tracts.accroche}</p>
+      {/* Bandeau héro par-dessus le carrousel */}
+      <section className="relative z-10 container max-w-7xl px-4 py-16 md:py-24">
+        <h1 className="hero-title">Centre d’accueil en zoothérapie</h1>
+        <p className="hero-subtitle">{tracts.accroche}</p>
         <div className="mt-6 flex gap-3">
           <Link className="btn btn-primary" href="/tarifs">Découvrir les séances</Link>
           <Link className="btn btn-ghost" href="/contact">Réserver / Infos</Link>
         </div>
       </section>
 
-      {/* Contenu en cartes, sans les grandes images de tracts */}
+      {/* Cartes d’infos */}
       <section className="page grid gap-6 md:grid-cols-3">
         <SectionCard title="Pourquoi venir ?">
           <ul className="list-disc pl-5">

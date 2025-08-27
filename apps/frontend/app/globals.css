@@ -2,17 +2,34 @@
 
 /* Charte via @theme */
 @theme {
-  --color-brand-dark: #0f3d2f;
-  --color-brand-light: #7cc56b;
-  --color-brand-cream: #f5f2ea;
+  --color-brand-dark: #0f3d2f;   /* vert foncé */
+  --color-brand-light: #7cc56b;  /* vert clair */
+  --color-brand-cream: #f5f2ea;  /* beige / cartes */
+
   --shadow-soft: 0 8px 24px rgba(0,0,0,.08);
   --radius-xl: 1rem;
   --radius-2xl: 1.25rem;
 }
 
+/* === Base === */
 html, body { background: var(--color-brand-cream); }
+.page { @apply container max-w-7xl py-12; }
+
 .card { @apply rounded-2xl bg-white shadow-[var(--shadow-soft)]; }
 .btn { @apply inline-flex items-center justify-center rounded-full px-5 py-2 font-medium transition; }
-.btn-primary { @apply bg-brand-dark text-white hover:opacity-90; }
-.btn-ghost { @apply bg-white/90 text-brand-dark hover:bg-white; }
-.page { @apply container max-w-7xl py-12; }
+.btn-primary { @apply bg-[--color-brand-dark] text-white hover:opacity-90; }
+.btn-ghost  { @apply bg-white/90 text-[--color-brand-dark] hover:bg-white; }
+
+/* Hero : lisibilité titres */
+.hero-title {
+  font-family: var(--font-caveat, ui-serif);
+  @apply text-4xl md:text-6xl font-bold leading-tight text-white drop-shadow;
+}
+.hero-subtitle { @apply mt-3 max-w-2xl text-lg text-white/90; }
+
+/* Anim légère pour le carrousel */
+@keyframes kenburns {
+  0%   { transform: scale(1.05); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1.05); }
+}
