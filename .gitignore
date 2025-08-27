@@ -1,43 +1,53 @@
-# --- Node / Next.js ---
+# --- Node / Next.js (monorepo) ---
 node_modules/
-frontend/.next/
-frontend/.storybook/out/
-frontend/.turbo/
-frontend/.cache/
+.pnp.*                     # si jamais
+pnpm-debug.log*
+
+# Next build caches
+apps/frontend/.next/
+apps/frontend/out/
+apps/frontend/.turbo/
+apps/frontend/.cache/
+
+# Storybook build
+apps/frontend/storybook-static/
+apps/frontend/.storybook-out/
+# NE PAS ignorer .storybook lui-même
+!.storybook
+!apps/frontend/.storybook/**
 
 # Logs
 *.log
+*.log.*
 npm-debug.log*
-pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# ENV
+# ENV (ne pas committer vos secrets)
 .env
 .env.*
-frontend/.env*
+apps/frontend/.env.local
+apps/api/.env
 
-# Test coverage
-frontend/coverage/
-frontend/.vitest/
+# Coverage & tests
+coverage/
+apps/frontend/coverage/
+apps/frontend/.vitest/
+apps/api/.pytest_cache/
+apps/api/.mypy_cache/
+apps/api/.ruff_cache/
+apps/api/.coverage
+apps/api/htmlcov/
 
 # --- Python / FastAPI ---
-api/__pycache__/
-api/.pytest_cache/
-api/.mypy_cache/
-api/.ruff_cache/
-api/.coverage
-api/htmlcov/
-api/.env*
-
-# Virtual env
-.venv/
-api/.venv/
 apps/api/.venv/
-venv/
-ENV/
+apps/api/__pycache__/
+**/__pycache__/
+*.py[cod]
 
-# --- Global ---
-*.DS_Store
+# OS / éditeur
+.DS_Store
 Thumbs.db
 
-# Notes perso / dev
+# Notes perso
 _notes/

@@ -1,0 +1,11 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+/* Vos utilitaires/composants avec @apply */
+@layer components {
+  .card { @apply rounded-2xl bg-white shadow; }
+  .btn  { @apply inline-flex items-center justify-center rounded-full px-5 py-2 font-medium transition; }
+  .btn-primary { @apply bg-brand-dark text-white hover:opacity-90; }
+  .btn-ghost   { @apply bg-white/90 text-brand-dark hover:bg-white; }
+  .page { @apply container max-w-7xl py-12; }
+}

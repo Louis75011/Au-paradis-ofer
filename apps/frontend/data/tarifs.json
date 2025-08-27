@@ -1,0 +1,6 @@
+[
+  { "id": 1, "intitule": "Séance individuelle", "duree": "1h", "prix": 50 },
+  { "id": 2, "intitule": "Forfait 5 séances individuelles", "duree": "5x1h", "prix": 225 },
+  { "id": 3, "intitule": "Forfait 10 séances individuelles", "duree": "10x1h", "prix": 450 },
+  { "id": 4, "intitule": "Séance 2 personnes", "duree": "1h15", "prix": 80 }
+]

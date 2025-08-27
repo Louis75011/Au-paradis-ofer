@@ -27,10 +27,13 @@ alembic upgrade head
 # GIT
 git aa && git c "NOM" && git p
 
+# MÀJ
+git checkout main && git pull origin main && git merge dev && git push origin main
+
 # STORYBOOK
 pnpm -C apps/frontend storybook
 
-# OLCAL FRONT
+# LOCAL FRONT
 pnpm -C apps/frontend dev
 
 # LOCAL BACK
