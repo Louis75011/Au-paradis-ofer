@@ -6,7 +6,7 @@ export const metadata = { title: "Animations chiens (à venir)" };
 
 export default function ChiensPage() {
   return (
-    <div className="page">
+    <div className="container mx-auto py-10 px-12">
       <h1 className="text-3xl font-bold text-brand-dark">Animations canines – prochainement</h1>
       <p className="mt-4 max-w-2xl">
         Des ateliers ludiques et bienveillants dédiés aux chiens et à leurs maîtres viendront

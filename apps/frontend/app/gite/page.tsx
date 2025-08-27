@@ -2,7 +2,7 @@ export const metadata = { title: "Gîte (à venir)" };
 
 export default function GitePage() {
   return (
-    <div className="page">
+    <div className="container mx-auto py-10 px-12">
       <h1 className="text-3xl font-bold text-brand-dark">Gîte – prochainement</h1>
       <p className="mt-4 max-w-2xl">
         Nous préparons un hébergement simple et chaleureux sur place pour prolonger l’expérience

@@ -9,8 +9,8 @@ import { useState } from "react";
 type KnownRoute = Route | "/gite" | "/chiens";
 
 const navItems = [
-  { href: "/tarifs",  label: "Tarifs" },
   { href: "/about",   label: "À propos" },
+  { href: "/tarifs",  label: "Séances" },
   { href: "/gite",    label: "Gîte (à venir)" },
   // { href: "/chiens",  label: "Chiens (à venir)" },
   { href: "/contact", label: "Contact" },
@@ -22,25 +22,31 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-[--color-brand-dark] text-white">
-      <div className="container max-w-7xl flex items-center justify-between px-4 py-3">
+    <header className="sticky top-0 z-50 bg-brand-dark text-white">
+      <div className="flex items-center justify-between px-6 py-4">
         <Link href="/" aria-label="Accueil - Au Paradis O'Fer" className="flex items-center gap-3">
-          <Image src="/images/logo-sans-fond.png" alt="Logo Au Paradis O'Fer" width={140} height={64} priority />
+          <Image
+            src="/images/logo-sans-fond.png"
+            alt="Logo Au Paradis O'Fer"
+            width={150}            /* un peu plus grand en desktop */
+            height={68}
+            priority
+          />
         </Link>
 
         {/* Desktop */}
-        <nav aria-label="Navigation principale" className="hidden md:block">
-          <ul className="flex items-center gap-6 text-sm">
-            {navItems.map((n) => {
-              const active = pathname === n.href;
+        <nav aria-label="Navigation principale" className="hidden md:block pr-4">
+          <ul className="nav-bar">
+            {navItems.map((item) => {
+              const active = pathname === item.href;
               return (
-                <li key={n.href as string}>
+                <li key={item.href as string}>
                   <Link
-                    href={n.href}
+                    href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded px-2 py-1 hover:underline underline-offset-4 ${active ? "font-semibold bg-white/10" : ""}`}
+                    className={`nav-link underline-offset-4 hover:underline ${active ? "bg-white/10" : ""}`}
                   >
-                    {n.label}
+                    {item.label}
                   </Link>
                 </li>
               );
@@ -50,7 +56,7 @@ export default function Header() {
 
         {/* Mobile */}
         <button
-          className="md:hidden rounded bg-white/10 px-3 py-2"
+          className="md:hidden rounded bg-white/10 px-3 py-2 text-base"
           aria-expanded={open}
           aria-controls="menu-mobile"
           onClick={() => setOpen((v) => !v)}
@@ -63,14 +69,14 @@ export default function Header() {
         <div id="menu-mobile" className="md:hidden border-t border-white/10">
           <nav className="container max-w-7xl py-2">
             <ul className="flex flex-col gap-1 text-sm">
-              {navItems.map((n) => (
-                <li key={n.href as string}>
+              {navItems.map((item) => (
+                <li key={item.href as string}>
                   <Link
-                    href={n.href}
-                    className="block rounded px-3 py-2 hover:bg-white/10"
+                    href={item.href}
+                    className="block rounded px-3 py-3 hover:bg-white/10"
                     onClick={() => setOpen(false)}
                   >
-                    {n.label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
