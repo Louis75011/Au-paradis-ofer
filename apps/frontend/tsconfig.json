@@ -23,5 +23,5 @@
     "paths": { "@/*": ["./*"] },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/globals.scc"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next", "src/stories"]
 }
