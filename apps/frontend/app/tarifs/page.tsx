@@ -5,7 +5,7 @@ export const metadata = { title: "Tarifs" };
 export default function TarifsPage() {
   return (
     <div className="container mx-auto py-10 px-12">
-      <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances</h1>
+      <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances d'animations équestres</h1>
 
       <ul className="grid gap-5 md:grid-cols-2">
         {tarifs.map((t) => (

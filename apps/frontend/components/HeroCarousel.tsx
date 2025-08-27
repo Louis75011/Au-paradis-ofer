@@ -17,7 +17,7 @@ export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % IMAGES.length), 6000);
+    const id = setInterval(() => setIndex((i) => (i + 1) % IMAGES.length), 5000);
     return () => clearInterval(id);
   }, []);
 

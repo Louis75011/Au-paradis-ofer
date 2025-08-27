@@ -7,17 +7,30 @@ import tarifs from "@/data/tarifs.json";
 export default function HomePage() {
   return (
     <div className="relative">
-      <HeroCarousel />
+      <section className="py-6 sm:py-8 lg:py-10">
+        {/* centrage vertical doux + centrage horizontal */}
+        <div className="min-h-[0.1vh] grid place-items-center">
+          <div className="w-full mx-auto rounded-2xl overflow-hidden shadow-lg">
+            <HeroCarousel />
+          </div>
+        </div>
+    </section>
 
       {/* Bandeau héro par-dessus le carrousel */}
-      <section className="relative z-10 container max-w-7xl px-4 py-16 md:py-24">
-        <h1 className="hero-title">Centre d’accueil en zoothérapie</h1>
-        <p className="hero-subtitle">{tracts.accroche}</p>
-        <div className="mt-6 flex gap-3">
-          <Link className="btn btn-primary" href="/tarifs">Découvrir les séances</Link>
-          <Link className="btn btn-ghost" href="/contact">Réserver / Infos</Link>
-        </div>
-      </section>
+ <section className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24 md:py-32">
+  <h1 className="hero-title">Centre d’accueil en zoothérapie</h1>
+  <p className="hero-subtitle mt-3 max-w-2xl">
+    {tracts.accroche}
+  </p>
+  <div className="mt-6 flex flex-wrap justify-center gap-4">
+    <Link className="btn btn-primary" href="/tarifs">
+      Découvrir les séances
+    </Link>
+    <Link className="btn btn-ghost" href="/contact">
+      Réserver / Infos
+    </Link>
+  </div>
+</section>
 
       {/* Cartes d’infos */}
       <section className="page grid gap-6 md:grid-cols-3">

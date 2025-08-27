@@ -11,7 +11,7 @@ type KnownRoute = Route | "/gite" | "/chiens";
 const navItems = [
   { href: "/about",   label: "À propos" },
   { href: "/tarifs",  label: "Séances" },
-  { href: "/gite",    label: "Gîte (à venir)" },
+  { href: "/gite",    label: "Gîte" },
   // { href: "/chiens",  label: "Chiens (à venir)" },
   { href: "/contact", label: "Contact" },
 ] as const satisfies ReadonlyArray<{ href: KnownRoute; label: string }>;

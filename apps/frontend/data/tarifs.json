@@ -1,6 +1,69 @@
 [
-  { "id": 1, "intitule": "Séance individuelle", "duree": "1h", "prix": 50 },
-  { "id": 2, "intitule": "Forfait 5 séances individuelles", "duree": "5x1h", "prix": 225 },
-  { "id": 3, "intitule": "Forfait 10 séances individuelles", "duree": "10x1h", "prix": 450 },
-  { "id": 4, "intitule": "Séance 2 personnes", "duree": "1h15", "prix": 80 }
+  {
+    "id": 1,
+    "intitule": "Séance individuelle",
+    "duree": "1h (environ)",
+    "prix": 50
+  },
+  {
+    "id": 2,
+    "intitule": "Forfait 5 séances individuelles",
+    "duree": "5x1h (environ)",
+    "prix": 225,
+    "note": "soit la 5ème séance à moitié prix"
+  },
+  {
+    "id": 3,
+    "intitule": "Forfait 10 séances individuelles",
+    "duree": "10x1h (environ)",
+    "prix": 450,
+    "note": "soit la 10ème séance offerte"
+  },
+  {
+    "id": 4,
+    "intitule": "Séance 2 personnes",
+    "duree": "1h15 (environ)",
+    "prix": 80
+  },
+  {
+    "id": 5,
+    "intitule": "Forfait groupes",
+    "duree": "1h30 (environ)",
+    "prix": 140,
+    "note": "par groupe de 4, +35 € par personne en plus"
+  },
+  {
+    "id": 6,
+    "intitule": "Forfait famille",
+    "duree": "1h30 (environ)",
+    "prix": 120,
+    "note": "pour 3 personnes (140 € pour 4, +35 € par personne en plus)"
+  },
+  {
+    "id": 7,
+    "intitule": "Forfait école",
+    "duree": "2h (environ)",
+    "prix": 250,
+    "note": "par groupe de 6 enfants, +25 € par enfant en plus"
+  },
+  {
+    "id": 8,
+    "intitule": "Séances découverte enfants",
+    "duree": "3h (mercredis et samedis, 14h-17h)",
+    "prix": 33,
+    "note": "à partir de 3 ans, jeux avec les poneys, goûter offert, 6 enfants max"
+  },
+  {
+    "id": 9,
+    "intitule": "Logement sans séance",
+    "duree": "1 nuit (jusqu'à 6 personnes)",
+    "prix": 95
+  },
+  {
+    "id": 10,
+    "intitule": "Logement + 1 séance individuelle",
+    "duree": "1 nuit + séance (jusqu'à 6 personnes)",
+    "prix": 130,
+    "note": "+35 € par personne en plus / nuit"
+  }
 ]

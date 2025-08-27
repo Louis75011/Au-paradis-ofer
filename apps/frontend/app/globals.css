@@ -59,6 +59,14 @@ html, body { background: var(--color-brand-cream); }
 }
 .hero-subtitle { @apply mt-3 max-w-2xl text-lg text-white/90; }
 
+.badge {
+  @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold;
+}
+
+.badge-ghost {
+  @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-white/85 text-[--color-brand-dark] ring-1 ring-black/10;
+}
+
 /* Anim légère pour le carrousel */
 @keyframes kenburns {
   0%   { transform: scale(1.05); }
