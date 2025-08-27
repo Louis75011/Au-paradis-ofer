@@ -1,0 +1,4 @@
+*.stories.ts
+*.stories.tsx
+src/stories/**
+.storybook/**
