@@ -9,7 +9,7 @@ export default function HomePage() {
     <div className="relative">
       <section className="py-6 sm:py-8 lg:py-10">
         {/* centrage vertical doux + centrage horizontal */}
-        <div className="min-h-[0.1vh] grid place-items-center">
+        <div className="min-h-[1vh] grid place-items-center">
           <div className="w-full mx-auto rounded-2xl overflow-hidden shadow-lg">
             <HeroCarousel />
           </div>
