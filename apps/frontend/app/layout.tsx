@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.scss";
-import './tailwind.css';
+import "@/app/globals.css";
 import { site } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

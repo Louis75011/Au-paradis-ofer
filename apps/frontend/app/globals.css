@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Charte via @theme */
+@theme {
+  --color-brand-dark: #0f3d2f;
+  --color-brand-light: #7cc56b;
+  --color-brand-cream: #f5f2ea;
+  --shadow-soft: 0 8px 24px rgba(0,0,0,.08);
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+}
+
+html, body { background: var(--color-brand-cream); }
+.card { @apply rounded-2xl bg-white shadow-[var(--shadow-soft)]; }
+.btn { @apply inline-flex items-center justify-center rounded-full px-5 py-2 font-medium transition; }
+.btn-primary { @apply bg-brand-dark text-white hover:opacity-90; }
+.btn-ghost { @apply bg-white/90 text-brand-dark hover:bg-white; }
+.page { @apply container max-w-7xl py-12; }

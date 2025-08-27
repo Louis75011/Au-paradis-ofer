@@ -17,7 +17,7 @@ const nav = [
   { href: "/tarifs",  label: "Tarifs" },
   { href: "/about",   label: "À propos" },
   { href: "/gite",    label: "Gîte (à venir)" },
-  { href: "/chiens",  label: "Chiens (à venir)" },
+  // { href: "/chiens",  label: "Chiens (à venir)" },
   { href: "/contact", label: "Contact" },
 ] as const satisfies ReadonlyArray<{ href: KnownRoute; label: string }>;
 
