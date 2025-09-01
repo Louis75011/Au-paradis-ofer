@@ -3,6 +3,8 @@
 Projet de site **familial et champêtre**, dédié aux **animations équestres** et à l’**accueil en gîte (à venir)**.  
 Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI + GraphQL)**.  
 
+TEST RAPIDE : https://au-paradis-ofer-frontend.vercel.app/
+
 ---
 
 ## 🚀 Technologies (dernières versions — août 2025)

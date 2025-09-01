@@ -34,7 +34,7 @@ export default function GitePage() {
         {offres.map((o) => (
           <li
             key={o.id}
-            className="card hover-card group relative p-6"
+            className="card hover-card group bg-brand-sky relative p-6"
             aria-label={`${o.intitule}, ${o.duree}, ${o.prix} ${o.unite ?? "€"}`}
           >
             <div className="flex items-start justify-between gap-4">
@@ -73,10 +73,11 @@ export default function GitePage() {
 
       {/* État d’avancement (conserve section existante) */}
       <div className="mt-8 rounded-2xl border border-dashed border-brand-dark/30 p-6">
-        <p className="font-medium">État :</p>
+        <p className="font-medium">État d&apos;avancement :</p>
         <ul className="list-disc pl-5">
-          <li>Configuration des chambres</li>
-          <li>Équipements & sécurité</li>
+          <li>Configuration de l&apos;accueil</li>
+          <li>pour Chambres en chantier</li>
+          <li>Équipements & sécurité à venir</li>
           <li>Ouverture prévisionnelle : <b>courant 2026</b></li>
         </ul>
       </div>

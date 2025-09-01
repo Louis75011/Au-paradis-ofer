@@ -52,18 +52,5 @@
     "duree": "3h (mercredis et samedis, 14h-17h)",
     "prix": 33,
     "note": "à partir de 3 ans, jeux avec les poneys, goûter offert, 6 enfants max"
-  },
-  {
-    "id": 9,
-    "intitule": "Logement sans séance",
-    "duree": "1 nuit (jusqu'à 6 personnes)",
-    "prix": 95
-  },
-  {
-    "id": 10,
-    "intitule": "Logement + 1 séance individuelle",
-    "duree": "1 nuit + séance (jusqu'à 6 personnes)",
-    "prix": 130,
-    "note": "+35 € par personne en plus / nuit"
   }
 ]

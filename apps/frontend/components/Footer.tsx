@@ -19,6 +19,7 @@ export default function Footer() {
         <div>
           <p className="font-semibold">Horaires & Infos</p>
           <p className="opacity-90">Séances sur réservation • Accueil familial</p>
+          <p className="opacity-90">En semaine, entre 9&nbsp;h et 18&nbsp;h</p>
         </div>
       </div>
       <div className="text-center bg-black/30 py-3 text-xs">© {new Date().getFullYear()} Au Paradis O&apos;Fer</div>

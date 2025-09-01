@@ -8,16 +8,20 @@ import Image from "next/image";
  * Performance : Next optimise et précharge la première image.
  */
 const IMAGES = [
+  { src: "/images/au-paradis-ofer-07.jpg" },
   { src: "/images/au-paradis-ofer-01.jpg" },
   { src: "/images/au-paradis-ofer-02.jpg" },
-  { src: "/images/au-paradis-ofer-03.jpg" }
+  { src: "/images/au-paradis-ofer-03.jpg" },
+  { src: "/images/au-paradis-ofer-04.jpg" },
+  { src: "/images/au-paradis-ofer-05.jpg" },
+  { src: "/images/au-paradis-ofer-06.jpg" },
 ];
 
 export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % IMAGES.length), 5000);
+    const id = setInterval(() => setIndex((i) => (i + 1) % IMAGES.length), 4000);
     return () => clearInterval(id);
   }, []);
 

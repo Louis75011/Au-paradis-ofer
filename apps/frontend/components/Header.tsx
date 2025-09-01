@@ -11,7 +11,9 @@ type KnownRoute = Route | "/gite" | "/chiens";
 const navItems = [
   { href: "/about",   label: "À propos" },
   { href: "/tarifs",  label: "Séances" },
-  { href: "/gite",    label: "Gîte" },
+  { href: "/chevaux",    label: "Nos chevaux" },
+  { href: "/gite",    label: "Gîtes" },
+  { href: "/installations",    label: "Nos installations" },
   // { href: "/chiens",  label: "Chiens (à venir)" },
   { href: "/contact", label: "Contact" },
 ] as const satisfies ReadonlyArray<{ href: KnownRoute; label: string }>;
@@ -28,7 +30,7 @@ export default function Header() {
           <Image
             src="/images/logo-sans-fond.png"
             alt="Logo Au Paradis O'Fer"
-            width={150}            /* un peu plus grand en desktop */
+            width={200}            /* un peu plus grand en desktop */
             height={68}
             priority
           />

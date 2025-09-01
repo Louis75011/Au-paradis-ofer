@@ -5,13 +5,13 @@ export const metadata = { title: "Tarifs" };
 export default function TarifsPage() {
   return (
     <div className="container mx-auto py-10 px-12">
-      <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances d'animations équestres</h1>
+      <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances de médiation</h1>
 
       <ul className="grid gap-5 md:grid-cols-2">
         {tarifs.map((t) => (
           <li
             key={t.id}
-            className="card group hover-card /* cursor-hoof */ relative p-6"
+            className="card group hover-card /* cursor-hoof */ bg-brand-sky relative p-6"
             aria-label={`${t.intitule}, ${t.duree}, ${t.prix} euros`}
           >
             {/* Petit pictogramme en haut à droite qui se révèle au survol */}

@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "intitule": "Sans séance",
+    "duree": "1 nuit",
+    "prix": 95,
+    "unite": "€/nuit",
+    "capaciteMax": 6
+  },
+  {
+    "id": 2,
+    "intitule": "Nuit sur place + 1 séance individuelle",
+    "duree": "1 nuit",
+    "prix": 130,
+    "unite": "€/nuit/personne",
+    "capaciteMax": 6,
+    "note": "+35 € par personne en plus / nuit"
+  }
+]

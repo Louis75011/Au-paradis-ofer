@@ -1,0 +1,25 @@
+# Build & deps
+node_modules
+.next
+out
+dist
+build
+coverage
+
+# Env & misc
+.env*
+*.log
+
+# Generated
+**/*.min.* 
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Storybook & static
+.storybook-out
+storybook-static
+
+# Assets
+public/**/*.svg
+public/**/*.ico
