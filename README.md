@@ -109,7 +109,7 @@ uvicorn app.main:app --reload
 
 * Balises `<Image>` de Next.js pour toutes les images
 * Balises `meta` optimisées (SEO local + accessibilité ARIA)
-* URL lisibles (`/animations/chevaux`, `/gite`, etc.)
+* URL lisibles (`/animations/chevaux`, `/gites`, etc.)
 * Préparation d’un blog futur pour contenu naturel (référencement long terme)
 
 ---

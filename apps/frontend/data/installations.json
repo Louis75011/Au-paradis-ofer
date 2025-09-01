@@ -1,19 +1,31 @@
-[
-  {
-    "id": 1,
-    "intitule": "Sans séance",
-    "duree": "1 nuit",
-    "prix": 95,
-    "unite": "€/nuit",
-    "capaciteMax": 6
-  },
-  {
-    "id": 2,
-    "intitule": "Nuit sur place + 1 séance individuelle",
-    "duree": "1 nuit",
-    "prix": 130,
-    "unite": "€/nuit/personne",
-    "capaciteMax": 6,
-    "note": "+35 € par personne en plus / nuit"
-  }
-]
+{
+  "intro": "Nos installations évoluent : un manège semi-couvert est déjà opérationnel ; la sellerie, l’aire de pansage et l’accueil seront ajoutés prochainement.",
+  "elements": [
+    {
+      "id": "manege",
+      "nom": "Manège semi-couvert",
+      "dimensions": "15 × 30 m",
+      "revetement": "sable",
+      "photo": "/images/installations-manege.jpg",
+      "statut": "disponible"
+    },
+    {
+      "id": "sellerie",
+      "nom": "Sellerie",
+      "photo": null,
+      "statut": "à venir"
+    },
+    {
+      "id": "aire-pansage",
+      "nom": "Aire de pansage",
+      "photo": null,
+      "statut": "à venir"
+    },
+    {
+      "id": "accueil",
+      "nom": "Accueil",
+      "photo": null,
+      "statut": "en travaux bien avancés"
+    }
+  ]
+}

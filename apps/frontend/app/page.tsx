@@ -3,6 +3,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import SectionCard from "@/components/SectionCard";
 import tracts from "@/data/tracts.json";
 import tarifsData from "@/data/tarifs.json"; // ← importez vos tarifs
+import chevauxData from "@/data/chevaux.json";
 
 type Tarif = { id: string | number; intitule: string; prix: number };
 
@@ -45,8 +46,10 @@ export default function HomePage() {
         </SectionCard>
 
         <SectionCard title="Infos & réservation">
-          <p>Contactez-nous pour choisir la formule qui vous convient.</p>
-          <p>À termes, vous pourriez probablement réserver en ligne selon notre agenda !</p>
+          <ul className="list-disc pl-5">
+            <li>Contactez-nous pour choisir la formule qui vous convient.</li>
+          <li>À termes, vous pourriez probablement réserver en ligne selon notre agenda !</li>
+          </ul>
         </SectionCard>
       </section>
     </>
