@@ -7,6 +7,8 @@ type Cheval = {
   nom: string;
   type: "poney" | "cheval";
   age: number;
+  date_anniversaire: string;
+  race: string;
   photo: string;
   resume: string;
 };
@@ -25,19 +27,15 @@ export default function PageChevaux() {
       <header>
         <h1 className="text-3xl font-semibold">Nos chevaux</h1>
         <p className="mt-2 opacity-90">
-          Des compagnons sélectionnés pour leur douceur, leur stabilité et leur
-          habituation au contact humain.
+          Des compagnons sélectionnés pour leur douceur, leur stabilité et leur habituation au
+          contact humain.
         </p>
       </header>
 
       {chevaux.map((c) => (
-        <SectionCard
-          key={c.id}
-          title={`${c.nom} — ${c.type === "cheval" ? "cheval" : "poney"} · ${c.age} ans`}
-        >
-          {/* Layout robuste : image à gauche, texte à droite ; pas de sticky */}
+        <SectionCard key={c.id} title={c.nom}>
+          {/* Image à gauche, texte à droite */}
           <div className="flex flex-col gap-5 md:flex-row md:items-start">
-            {/* Colonne image : largeur fixe, ne rétrécit pas, pas de débordement */}
             <figure className="md:w-[550px] md:shrink-0 rounded-xl overflow-hidden">
               <Image
                 src={c.photo}
@@ -49,10 +47,23 @@ export default function PageChevaux() {
               />
             </figure>
 
-            {/* Colonne texte : peut rétrécir, ne déborde pas sur l'image */}
             <div className="min-w-0 space-y-3">
               <p className="opacity-90">{c.resume}</p>
-              {/* Placez ici d’éventuelles puces/caractéristiques */}
+
+              <ul className="text-sm opacity-80 space-y-1">
+                <li>
+                  <strong>Type :</strong> {c.type}
+                </li>
+                <li>
+                  <strong>Race :</strong> {c.race}
+                </li>
+                <li>
+                  <strong>Date de naissance :</strong> {c.date_anniversaire}
+                </li>
+                {/* <li>
+            <strong>Âge :</strong> {c.age} ans
+          </li> */}
+              </ul>
             </div>
           </div>
         </SectionCard>

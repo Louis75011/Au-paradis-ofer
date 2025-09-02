@@ -3,7 +3,6 @@ import HeroCarousel from "@/components/HeroCarousel";
 import SectionCard from "@/components/SectionCard";
 import tracts from "@/data/tracts.json";
 import tarifsData from "@/data/tarifs.json"; // ← importez vos tarifs
-import chevauxData from "@/data/chevaux.json";
 
 type Tarif = { id: string | number; intitule: string; prix: number };
 
@@ -14,7 +13,7 @@ export default function HomePage() {
     <>
       <section className="relative min-h-[72vh] md:min-h-[78vh] overflow-hidden">
         <HeroCarousel />
-        <div className="relative z-10 flex h-full min-h-[72vh] md:min-h-[78vh] flex-col items-center justify-center px-4 text-center">
+        <div className="relative z-10 flex h-full min-h-[62vh] md:min-h-[68vh] flex-col items-center justify-center px-4 text-center">
           <h1 className="hero-title">Centre d’accueil en zoothérapie</h1>
           <p className="hero-subtitle mt-3 max-w-2xl">{tracts.accroche}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
