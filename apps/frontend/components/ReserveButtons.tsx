@@ -1,27 +1,52 @@
 "use client";
-import { differenceInCalendarDays } from "date-fns";
 
-export default function ReserveButtons({ dateISO }: { dateISO: string }) {
-  const reg = process.env.NEXT_PUBLIC_CAL_REGULAR!;
-  const rush = process.env.NEXT_PUBLIC_CAL_RUSH!;
-  const isRush = differenceInCalendarDays(new Date(dateISO), new Date()) < 3;
+import { useTransition } from "react";
 
-  const url = isRush ? rush : reg;
+type Props = {
+  dateISO?: string | null;
+  title: string;
+  amountEuro: number;
+  tarifId: string | number; // accepte les deux
+};
+
+export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: Props) {
+  const [pending, startTransition] = useTransition();
+
+  async function startCheckout(kind: "card" | "sepa") {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify({ kind, dateISO: dateISO ?? undefined, title, amountEuro, tarifId }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (!res.ok) {
+      const msg = await res.text();
+      alert(`Paiement indisponible : ${msg}`);
+      return;
+    }
+    const { url } = (await res.json()) as { url: string };
+    location.href = url;
+  }
 
   return (
-    <div className="mt-4 flex gap-3">
-      <a
-        className="btn btn-primary"
-        href={url}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={isRush ? "Réserver (carte uniquement)" : "Réserver (SEPA ou carte)"}
+    <div className="mt-4 flex gap-2">
+      <button
+        className="btn btn-primary hover-button bg-brand-dark disabled:opacity-60"
+        disabled={pending}
+        onClick={() => startTransition(() => startCheckout("card"))}
+        aria-label="Payer par carte (réservation immédiate)"
+        title={dateISO ? `Payer pour le ${dateISO}` : undefined}
       >
-        {isRush ? "Payer par carte (dernière minute)" : "Payer (SEPA préféré)"}
-      </a>
-      {!isRush && (
-        <span className="badge badge-ghost">Préférence : SEPA (frais réduits)</span>
-      )}
+        Carte
+      </button>
+      <button
+        className="btn btn-primary hover-button bg-brand-light text-white disabled:opacity-60"
+        disabled={pending}
+        onClick={() => startTransition(() => startCheckout("sepa"))}
+        aria-label="Payer par SEPA (réservation planifiée)"
+        title={dateISO ? `Payer par SEPA pour le ${dateISO}` : undefined}
+      >
+        SEPA
+      </button>
     </div>
   );
 }

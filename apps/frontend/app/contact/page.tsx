@@ -1,23 +1,21 @@
 "use client";
-
+import BookingCalendar from "@/components/BookingCalendar";
 import { useState } from "react";
+// import { useState } from "react";
 
 /** Formulaire de prise de contact simple — envoi vers l'API GraphQL du back. */
 export default function ContactPage() {
   // const [status, setStatus] = useState<string | null>(null);
-
   // async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
   //   e.preventDefault();
   //   const form = new FormData(e.currentTarget);
   //   setStatus("Envoi en cours...");
-
   //   // Mutation GraphQL minimale (demande de réservation)
   //   const mutation = `
   //     mutation RequestBooking($input: BookingInput!) {
   //       requestBooking(input: $input) { id status }
   //     }
   //   `;
-
   //   const res = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!, {
   //     method: "POST",
   //     headers: { "Content-Type": "application/json" },
@@ -42,13 +40,16 @@ export default function ContactPage() {
   //     (e.target as HTMLFormElement).reset();
   //   }
   // }
-  
-  {/* <form className="mt-6 grid gap-4" onSubmit={onSubmit}> */}
 
-return (
+    const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  
+  {
+    /* <form className="mt-6 grid gap-4" onSubmit={onSubmit}> */
+  }
+  return (
     <div className="container mx-auto max-w-4xl py-10 px-12">
       <h1 className="text-3xl font-bold text-brand-dark">Contact & Réservation</h1>
-      
+
       <form
         className="mt-6 grid gap-4"
         action="mailto:au.paradis.o.fer@gmail.com"
@@ -80,6 +81,9 @@ return (
           Envoyer
         </button>
       </form>
+
+      {/* Calendrier avec jours déjà réservés */}
+      <BookingCalendar onDateSelected={setSelectedDate} />
     </div>
   );
 }

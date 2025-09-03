@@ -26,6 +26,9 @@ importers:
       '@calcom/embed-react':
         specifier: ^1.5.3
         version: 1.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@fullcalendar/core':
+        specifier: ^6.1.19
+        version: 6.1.19
       '@fullcalendar/daygrid':
         specifier: ^6.1.19
         version: 6.1.19(@fullcalendar/core@6.1.19)
@@ -100,7 +103,7 @@ importers:
         specifier: ^20
         version: 20.19.11
       '@types/react':
-        specifier: ^19
+        specifier: ^19.1.10
         version: 19.1.10
       '@types/react-dom':
         specifier: ^19

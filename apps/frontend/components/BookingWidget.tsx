@@ -6,6 +6,8 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { addMinutes, differenceInCalendarDays, formatISO } from "date-fns";
 
+// Calendrier des jours lors de la réservation choisie
+
 type Event = {
   id: string;
   title: string;

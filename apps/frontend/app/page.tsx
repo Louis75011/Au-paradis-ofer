@@ -17,8 +17,8 @@ export default function HomePage() {
           <h1 className="hero-title">Centre d’accueil en zoothérapie</h1>
           <p className="hero-subtitle mt-3 max-w-2xl">{tracts.accroche}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link className="btn btn-primary" href="/tarifs">Découvrir les séances</Link>
-            <Link className="btn btn-ghost" href="/contact">Réserver / Infos</Link>
+            <Link className="btn btn-primary" href="/tarifs">Réserver les séances</Link>
+            <Link className="btn btn-ghost" href="/contact">Prendre contact</Link>
           </div>
         </div>
       </section>

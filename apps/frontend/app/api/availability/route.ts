@@ -1,22 +1,51 @@
-import { NextResponse } from "next/server";
+// App Router - Edge runtime (Cloudflare Pages)
+// GET /api/availability  ->  { events: EventInput[] }
+
 export const runtime = "edge";
 
-type Env = { BOOKINGS_KV: KVNamespace };
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
-export async function GET(_: Request, ctx: { env: Env }) {
-  // Selon Pages/Workers, listez les clés KV (nécessite listing activé) ;
-  // à défaut, stockez aussi un index simple en parallèle
-  // Ici, on suppose un index JSON sous la clé "index:booked"
-  const raw = await ctx.env.BOOKINGS_KV.get("index:booked");
-  const list = raw ? JSON.parse(raw) as string[] : [];
+// facultatif : type FullCalendar (évite any)
+type CalendarEvent = {
+  id: string;
+  title: string;
+  start: string; // ISO
+  end?: string;  // ISO
+  allDay?: boolean;
+  display?: "auto" | "background" | "inverse-background" | "none" | undefined;
+  color?: string;
+};
 
-  const events = list.map((iso) => ({
-    start: iso,
-    end: new Date(new Date(iso).getTime() + 60 * 60 * 1000).toISOString(),
-    display: "background",
-    color: "#fca5a5",
-    overlap: false,
-  }));
+type BookingJSON = {
+    dateISO: string;
+    status: "reserved" | "hold";
+    title?: string;
+}
 
-  return NextResponse.json({ events });
+export async function GET() {
+  const { env } = getRequestContext();
+  const kv = (env as unknown as { BOOKINGS_KV: KVNamespace }).BOOKINGS_KV;
+
+  // On liste les clés "booking:<dateISO>"
+  const list = await kv.list({ prefix: "booking:" });
+
+  const events: CalendarEvent[] = [];
+  for (const name of list.keys) {
+    const json = await kv.get<BookingJSON>(name.name, "json");
+
+    if (json && typeof json === "object" && "dateISO" in json) {
+      const { dateISO, status, title } = json;
+
+      events.push({
+        id: name.name,
+        title: title ?? "Réservé",
+        start: dateISO,
+        allDay: true,
+        display: "background",
+        color: status === "hold" ? "#fbbf24" /* amber */ : "#f87171" /* red */,
+      });
+    }
+  }
+
+  return Response.json({ events });
 }
