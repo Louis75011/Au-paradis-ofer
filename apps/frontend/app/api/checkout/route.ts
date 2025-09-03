@@ -2,8 +2,13 @@ export const runtime = "edge";
 import { NextRequest, NextResponse } from "next/server";
 import { differenceInCalendarDays } from "date-fns";
 
+type CheckoutBody = {
+  slotISO: string;
+  method: "card" | "sepa";
+};
+
 // Helper pour appeler l'API Stripe via fetch (Edge/Workers friendly)
-async function stripeCreateCheckoutSession(params: Record<string, any>) {
+async function stripeCreateCheckoutSession(params: Record<string, unknown>) {
   const body = new URLSearchParams();
   for (const [k, v] of Object.entries(params)) body.append(k, String(v));
 
@@ -21,16 +26,17 @@ async function stripeCreateCheckoutSession(params: Record<string, any>) {
   }
   return res.json();
 }
-
 export async function POST(req: NextRequest) {
   try {
-    const { slotISO, method } = await req.json();
-    if (!slotISO || !method) return NextResponse.json({ error: "Bad request" }, { status: 400 });
+    const { slotISO, method } = (await req.json()) as CheckoutBody;
 
+    if (!slotISO || !method) {
+      return NextResponse.json({ error: "Bad request" }, { status: 400 });
+    }
     const sepaMinDays = Number(process.env.NEXT_PUBLIC_SEPA_MIN_DAYS ?? 5);
     const days = differenceInCalendarDays(new Date(slotISO), new Date());
 
-    const allowSepa = method === "sepa_card" && days >= sepaMinDays;
+    const allowSepa = method === "sepa" && days >= sepaMinDays;
     const payment_method_types = allowSepa ? ["card", "sepa_debit"] : ["card"];
 
     const success_url = `${process.env.NEXT_PUBLIC_BASE_URL}/reservation/succes?slot=${encodeURIComponent(slotISO)}`;
@@ -49,9 +55,9 @@ export async function POST(req: NextRequest) {
       payment_method_types: payment_method_types.join(","),
     });
 
-    return NextResponse.json({ url: session.url });
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message || "Server error" }, { status: 500 });
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
 

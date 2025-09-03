@@ -5,4 +5,6 @@ compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "BOOKINGS_KV"
-id = "418006f70aab49e3a20ebc8b3d2ebd3f"
+id = "41800f70aab49e3a20ebc8b3d2ebd3f"
+# Optionnel pour dev local
+preview_id = "<ID_PREVIEW>"
