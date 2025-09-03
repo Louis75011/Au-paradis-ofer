@@ -19,7 +19,8 @@ html, body { background: var(--color-brand-cream); }
 .card { @apply rounded-2xl text-white shadow-[var(--shadow-soft)]; }
 
 /* === Cartes interactives : survol doux, retour fluide === */
-.hover-card {
+/* === Cartes interactives : survol doux, retour fluide === */
+.hover-button {
    will-change: transform; /* Indique au navigateur qu'on va animer transform - meilleures perfs */
   transition: transform 260ms ease, box-shadow 260ms ease, opacity 200ms ease;
   cursor: pointer;
@@ -27,18 +28,18 @@ html, body { background: var(--color-brand-cream); }
 
 /* Animation au survol uniquement si l’appareil a un vrai hover */
 @media (hover: hover) {
-  .hover-card:hover {
+  .hover-button:hover {
     transform: scale(1.03);              /* léger grossissement */
     box-shadow: var(--shadow-soft);      /* ombre douce */
   }
-  .hover-card:active {
+  .hover-button:active {
     transform: scale(0.995);             /* petit “tap” au clic */
   }
 }
 
 /* Accessibilité : désactive les anims si l’utilisateur préfère moins d’animations */
 @media (prefers-reduced-motion: reduce) {
-  .hover-card { transition: none !important; }
+  .hover-button { transition: none !important; }
 }
 
 .btn { @apply inline-flex items-center justify-center rounded-full px-5 py-2 font-medium transition; }

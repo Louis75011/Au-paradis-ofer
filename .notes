@@ -1,20 +1,8 @@
 ### Scripts de confort (dev)
 
-<!-- Stripe paiement carte et SEPA, Cal.Com calendrier géré et réservations, Cloudflare test et deploiement -->
+<!-- Stripe paiement carte et SEPA, FullCalendar : calendrier géré et réservations, Cloudflare test et deploiement avant hébergeur -->
 
-<!-- 5) Stripe / Cal.com (sécurité & raccord)
-
-Ne publiez jamais une clé sk_*. Côté frontend uniquement la pk_* (publique).
-
-Dans Cloudflare Pages → Settings → Environment variables :
-
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_… (ou test)
-
-STRIPE_SECRET_KEY=sk_live_… (si vous appelez Stripe côté Edge/API)
-
-Cal.com → Apps installées → Stripe → Connect (puis dans chaque Type d’événement → Paiements → Require payment + prix).
-
-Google Agenda (pour éviter les doubles réservations) : Settings → Calendars → connectez votre compte au.paradis.o.fer@gmail.com. -->
+<!-- Google Agenda (pour éviter les doubles réservations) : Settings → Calendars → connectez votre compte au.paradis.o.fer@gmail.com. -->
 
 #### Frontend (Next.js)
 

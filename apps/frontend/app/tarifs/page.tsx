@@ -9,11 +9,12 @@ export default function TarifsPage({ url }: { url: string }) {
       <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances de médiation</h1>
 
       <p>
-        Les modalités disponibles sont de dernière minute pour la carte, et SEPA avec réservation
-        prévue à l&apos;avance. VOus pouvez réserver dans le calendrier directemetn ou prendre
-        contact avec nous.
+        Les modalités proposées sont les suivantes&nbsp;: paiement par carte pour les réservations
+        de dernière minute, et éventuellement par virement SEPA pour celles planifiées à l’avance. Vous pouvez
+        réserver directement via le calendrier ou bien nous contacter.
       </p>
-      
+      <br></br>
+
       <ul className="grid gap-5 md:grid-cols-2">
         {tarifs.map((t) => (
           <li
@@ -42,14 +43,14 @@ export default function TarifsPage({ url }: { url: string }) {
             {/* Sans date pour l’instant : propose les 2 */}
             <div className="mt-4 flex gap-2">
               <a
-                className="btn btn-primary"
+                className="btn btn-primary hover-button bg-brand-dark"
                 href={process.env.NEXT_PUBLIC_CAL_RUSH!}
                 target="_blank"
               >
                 Carte
               </a>
               <a
-                className="btn btn-ghost"
+                className="btn btn-ghost hover-button bg-brand-dark"
                 href={process.env.NEXT_PUBLIC_CAL_REGULAR!}
                 target="_blank"
               >
