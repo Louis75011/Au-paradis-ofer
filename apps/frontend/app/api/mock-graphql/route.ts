@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-
 export const runtime = 'edge';
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   // On lit la requête juste pour rester conforme à GraphQL,

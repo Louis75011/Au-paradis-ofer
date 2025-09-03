@@ -1,3 +1,4 @@
+export const runtime = "edge";
 import { NextRequest, NextResponse } from "next/server";
 import { differenceInCalendarDays } from "date-fns";
 
@@ -5,7 +6,6 @@ import { differenceInCalendarDays } from "date-fns";
 // NEXT_PUBLIC_STRIPE_LINK_SEPA=https://buy.stripe.com/test_xxx
 // NEXT_PUBLIC_STRIPE_LINK_CARD=https://buy.stripe.com/test_yyy
 
-export const runtime = "edge";
 
 export async function POST(req: NextRequest) {
   const { dateISO } = await req.json() as { dateISO: string };
