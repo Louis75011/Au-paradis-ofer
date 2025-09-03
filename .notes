@@ -1,5 +1,7 @@
 ### Scripts de confort (dev)
 
+<!-- Stripe paiement carte et SEPA, Cal.Com calendrier géré et réservations, Cloudflare test et deploiement -->
+
 #### Frontend (Next.js)
 
 ```powershell

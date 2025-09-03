@@ -1,8 +1,9 @@
 import tarifs from "@/data/tarifs.json";
+import ReserveButtons from "@/components/ReserveButtons";
 
 export const metadata = { title: "Tarifs" };
 
-export default function TarifsPage() {
+export default function TarifsPage({ url }: { url: string }) {
   return (
     <div className="container mx-auto py-10 px-12">
       <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances de médiation</h1>
@@ -29,9 +30,36 @@ export default function TarifsPage() {
             <p className="font-semibold">{t.intitule}</p>
             <p className="text-sm opacity-80">Durée : {t.duree}</p>
             <p className="mt-2 text-lg font-bold">{t.prix} €</p>
+
+            {/* state de date à passer ici ? */}
+            {/* <ReserveButtons dateISO={selectedDate} /> */}
+            {/* Sans date pour l’instant : propose les 2 */}
+            <div className="mt-4 flex gap-2">
+              <a
+                className="btn btn-primary"
+                href={process.env.NEXT_PUBLIC_CAL_RUSH!}
+                target="_blank"
+              >
+                Carte (dernière minute)
+              </a>
+              <a
+                className="btn btn-ghost"
+                href={process.env.NEXT_PUBLIC_CAL_REGULAR!}
+                target="_blank"
+              >
+                SEPA ou carte
+              </a>
+            </div>
           </li>
         ))}
       </ul>
+
+      {/* Embed Cal.com sur une page (à venir) */}
+      {/* <iframe
+        src={url}
+        style={{ width: "100%", height: "80vh", border: "0", borderRadius: "16px" }}
+        loading="lazy"
+      /> */}
     </div>
   );
 }

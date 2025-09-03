@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
   // Images optimisées
   images: {
     formats: ["image/avif", "image/webp"],
+    // remotePatterns: [
+    //   { protocol: 'https', hostname: 'au-paradis-ofer.pages.dev' },
+    //   // ...autres domaines au besoin
+    // ],
   },
 
   // Supprimer l’en-tête "X-Powered-By: Next.js"

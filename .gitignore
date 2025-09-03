@@ -33,17 +33,6 @@ apps/api/.env
 coverage/
 apps/frontend/coverage/
 apps/frontend/.vitest/
-apps/api/.pytest_cache/
-apps/api/.mypy_cache/
-apps/api/.ruff_cache/
-apps/api/.coverage
-apps/api/htmlcov/
-
-# --- Python / FastAPI ---
-apps/api/.venv/
-apps/api/__pycache__/
-**/__pycache__/
-*.py[cod]
 
 # OS / éditeur
 .DS_Store
