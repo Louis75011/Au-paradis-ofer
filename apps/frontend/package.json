@@ -66,6 +66,7 @@
     "stylelint-config-standard": "^39.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vercel": "^47.0.1",
     "vitest": "^3.2.4",
     "whatwg-url": "^14.2.0",
     "wrangler": "^4.33.2"
