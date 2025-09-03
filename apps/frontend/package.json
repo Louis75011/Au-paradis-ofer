@@ -16,7 +16,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

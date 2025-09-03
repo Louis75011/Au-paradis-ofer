@@ -7,6 +7,8 @@
 <!-- pnpm -C apps/frontend build; if ($LASTEXITCODE -eq 0) { pnpm -C apps/frontend start }
 (TEST PROD LOCAL) -->
 
+<!-- pnpm --filter frontend vercel build -->
+
 <!-- Reservation autonome avec FullCalendar et un paiement Stripe.
 SEPA est autorisé uniquement si le créneau ≥ J+5.
 Phase 1 marche sans base. Phase 2 (KV) verrouille les créneaux proprement. -->

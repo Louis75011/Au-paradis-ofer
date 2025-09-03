@@ -1,0 +1,7 @@
+{
+  "name": "au-paradis-ofer",   // tout en minuscules
+  "compatibility_date": "2025-09-03",
+  "assets": {
+    "directory": "apps/frontend/.vercel/output/static"
+  }
+}
