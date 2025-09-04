@@ -4,6 +4,8 @@
 
 <!-- Google Agenda (pour éviter les doubles réservations) : Settings → Calendars → connectez votre compte au.paradis.o.fer@gmail.com. -->
 
+<!-- Réserver selon horaires séances et calendrier non par jour mais par heure -->
+
 <!-- pnpm -C apps/frontend build; if ($LASTEXITCODE -eq 0) { pnpm -C apps/frontend start }
 (TEST PROD LOCAL) -->
 
@@ -39,18 +41,23 @@ alembic upgrade head
 #### Commandes Terminal
 
 # GIT
+
 git aa ; git c "NOM" ; git p
 
 # MÀJ
+
 git checkout main ; git pull origin main ; git merge dev ; git push origin main
 
 # STORYBOOK
+
 pnpm -C apps/frontend storybook
 
 # LOCAL FRONT
+
 pnpm -C apps/frontend dev
 
 # LOCAL BACK
+
 cd \apps\api
 .venv\Scripts\Activate
 uvicorn app.main:app --reload --port 8000
@@ -63,9 +70,9 @@ query { sessions { id name duration_minutes price_eur } }
 
 Demander une réservation (enverra un mail simulé si SMTP non configuré)
 mutation {
-  requestBooking(input:{
-    fullName:"Jean Dupont", email:"jean@example.com", date:"2025-09-02", sessionId:1
-  }) { id status }
+requestBooking(input:{
+fullName:"Jean Dupont", email:"jean@example.com", date:"2025-09-02", sessionId:1
+}) { id status }
 }
 
 IMAGES : Cloudinary (!) ou Vercel Blob pour le stockage d’images
@@ -73,28 +80,28 @@ IMAGES : Cloudinary (!) ou Vercel Blob pour le stockage d’images
 #### Git utilisateur
 
 [core]
-    editor = code --wait   # VSCode comme éditeur par défaut (facultatif)
-    autocrlf = input       # gestion des fins de ligne (bon compromis sous Windows)
-    ignorecase = true
+editor = code --wait # VSCode comme éditeur par défaut (facultatif)
+autocrlf = input # gestion des fins de ligne (bon compromis sous Windows)
+ignorecase = true
 
 [alias]
-    st = status
-    co = checkout
-    b = branch
-    br = branch
-    g = grep
-    c = commit -m
-    aa = add .
-    ca = commit -a -m
-    df = diff
-    lg = log --oneline --graph --decorate --all
-    pl = pull --rebase
-    ps = push
-    p = push
-    undo = reset --soft HEAD~1
-    amend = commit --amend --no-edit
-    acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f"
-    sw = switch
-    cob = checkout -b
+st = status
+co = checkout
+b = branch
+br = branch
+g = grep
+c = commit -m
+aa = add .
+ca = commit -a -m
+df = diff
+lg = log --oneline --graph --decorate --all
+pl = pull --rebase
+ps = push
+p = push
+undo = reset --soft HEAD~1
+amend = commit --amend --no-edit
+acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f"
+sw = switch
+cob = checkout -b
 
 👉 Ces commandes sont vos raccourcis pratiques pour lancer le frontend, le backend, l'outil de versioning git, les tests et les outils de qualité.
