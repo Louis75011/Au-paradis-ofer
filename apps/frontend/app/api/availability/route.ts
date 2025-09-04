@@ -19,6 +19,9 @@ type CalendarEvent = {
   color?: string;
 };
 
+// Flag global pour activer/désactiver le mockfile
+const USE_MOCK_FILE = false; // changez à true pour le réactiver
+
 export async function GET() {
   try {
     const env = await getCfEnv<{ BOOKINGS_KV: KVNamespace }>();
@@ -37,39 +40,42 @@ export async function GET() {
             title: json.title ?? "Réservé",
             start: json.dateISO,
             allDay: true,
-            display: "background" as const,
+            display: "background",
             color: json.status === "hold" ? "#fbbf24" : "#f87171",
-          } satisfies CalendarEvent);      // <- vérification de forme
+          });
         }
       }
 
       return Response.json({ events });
     }
 
-    // --- Cas local (mock JSON + mockStore en mémoire) ---
-    const mockFile = (await import("@/data/mock-bookings.json")).default as BookingBody[];
+    // --- Cas local ---
     const events: CalendarEvent[] = [];
 
-    for (const [i, m] of mockFile.entries()) {
-      events.push({
-        id: `mockfile:${i}`,
-        title: m.title ?? "Réservé",
-        start: m.dateISO,
-        allDay: true,
-        display: "background" as const,
-        color: m.status === "hold" ? "#fbbf24" : "#f87171",
-      } satisfies CalendarEvent);
+    if (USE_MOCK_FILE) {
+      const mockFile = (await import("@/data/mock-bookings.json")).default as BookingBody[];
+      for (const [i, m] of mockFile.entries()) {
+        events.push({
+          id: `mockfile:${i}`,
+          title: m.title ?? "Réservé",
+          start: m.dateISO,
+          allDay: true,
+          display: "background",
+          color: m.status === "hold" ? "#fbbf24" : "#f87171",
+        });
+      }
     }
 
+    // Données en mémoire (mockStore)
     for (const [dateISO, m] of Object.entries(mockStore)) {
       events.push({
         id: `mockmem:${dateISO}`,
         title: m.title ?? "Réservé",
         start: m.dateISO,
         allDay: true,
-        display: "background" as const,
+        display: "background",
         color: m.status === "hold" ? "#fbbf24" : "#f87171",
-      } satisfies CalendarEvent);
+      });
     }
 
     return Response.json({ events });

@@ -1,6 +1,7 @@
-import gites from "@/data/gites.json";
+"use client";
 
-export const metadata = { title: "Gîte (à venir)" };
+import { useState } from "react";
+import gites from "@/data/gites.json";
 
 type Gite = {
   id: number;
@@ -14,6 +15,7 @@ type Gite = {
 
 export default function GitePage() {
   const offres = gites as Gite[];
+const [showParagraph, setShowParagraph] = useState(false);
 
   return (
     <div className="page">
@@ -36,6 +38,7 @@ export default function GitePage() {
             key={o.id}
             className="card hover-card group bg-brand-sky relative p-6"
             aria-label={`${o.intitule}, ${o.duree}, ${o.prix} ${o.unite ?? "€"}`}
+            onClick={() => setShowParagraph(true)}
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -70,6 +73,13 @@ export default function GitePage() {
           </li>
         ))}
       </ul>
+      {showParagraph && (
+        <p className="mt-6">
+          À terme, les <b>réservations en ligne</b> seront possibles&nbsp;; pour le
+          moment, nous vous invitons à prendre directement <b>contact</b> avec
+          nous.
+        </p>
+      )}
 
       {/* État d’avancement (conserve section existante) */}
       <div className="mt-8 rounded-2xl border border-dashed border-brand-dark/30 p-6">

@@ -26,7 +26,7 @@ export async function GET() {
   }
 
   // 3) tentative via globalThis (rare, mais on vérifie)
-  const g = globalThis as any;
+  const g = globalThis as Record<string, unknown>;
   result.global_has_BOOKINGS_KV = !!g?.BOOKINGS_KV;
 
   return Response.json(result);

@@ -49,7 +49,7 @@ export default function BookingCalendar({ onDateSelected }: Props) {
         locale="fr"
       />
       <p className="mt-3 text-sm opacity-80">
-        Les jours colorés indiquent des créneaux déjà réservés.
+        Les heures et jours colorés indiqueront les créneaux déjà réservés.
       </p>
     </div>
   );

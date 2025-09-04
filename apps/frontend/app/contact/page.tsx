@@ -1,12 +1,10 @@
 "use client";
-// import BookingCalendar from "@/components/BookingCalendar";
-// import { useState } from "react";
-// import { useState } from "react";
+import BookingCalendar from "@/components/BookingCalendar";
+import { useState } from "react";
 
 /** Formulaire de prise de contact simple — envoi vers l'API GraphQL du back. */
 export default function ContactPage() {
-  // const [selectedDate, setSelectedDate] = useState<string | null>(null);
-
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   {
     /* <form className="mt-6 grid gap-4" onSubmit={onSubmit}> */
   }
@@ -47,7 +45,9 @@ export default function ContactPage() {
       </form>
 
       {/* Calendrier avec jours déjà réservés */}
-      {/* <BookingCalendar onDateSelected={setSelectedDate} /> */}
+      <br />
+      <h1 className="text-3xl font-bold text-brand-dark">Calendrier des réservations à venir</h1>
+      <BookingCalendar onDateSelected={setSelectedDate} />
     </div>
   );
 }

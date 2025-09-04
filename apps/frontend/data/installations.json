@@ -1,31 +1,56 @@
 {
-  "intro": "Nos installations évoluent : un manège semi-couvert est déjà opérationnel ; la sellerie, l’aire de pansage et l’accueil seront ajoutés prochainement.",
+  "intro": "Nos installations évoluent : le manège semi-couvert, la sellerie, l’allée praticable et l’aire de pansage sont déjà opérationnels, tandis que l’accueil ou la chambre d'hôte sont en travaux.",
   "elements": [
     {
       "id": "manege",
       "nom": "Manège semi-couvert",
       "dimensions": "15 × 30 m",
       "revetement": "sable",
-      "photo": "/images/installations-manege.jpg",
-      "statut": "disponible"
+      "photos": ["/images/installations-manege.jpg"],
+      "statut": "disponible",
+      "resume": "Espace confortable pour des séances sereines, par tous les temps."
+    },
+    {
+      "id": "allee-praticable",
+      "nom": "Allée praticable pour tous",
+      "photos": [
+        "/images/alle-praticable-pour-tous01.jpg",
+        "/images/alle-praticable-pour-tous02.jpg"
+      ],
+      "statut": "en travaux",
+      "resume": "Chemin d’accès stabilisé et pensé pour la sécurité."
     },
     {
       "id": "sellerie",
       "nom": "Sellerie",
-      "photo": null,
-      "statut": "à venir"
+      "photos": [
+        "/images/sellerie01.jpg",
+        "/images/sellerie02.jpg",
+        "/images/sellerie03.jpg"
+      ],
+      "statut": "à venir",
+      "resume": "Rangements, selles et harnachements organisés."
     },
     {
       "id": "aire-pansage",
       "nom": "Aire de pansage",
-      "photo": null,
-      "statut": "à venir"
+      "photos": ["/images/aire-de-pansage.jpg"],
+      "statut": "à venir",
+      "resume": "Zone dédiée à la préparation et aux soins."
     },
     {
       "id": "accueil",
       "nom": "Accueil",
-      "photo": null,
-      "statut": "en travaux bien avancés"
+      "photos": [],
+      "statut": "en travaux bien avancés",
+      "resume": "Un point d’accueil chaleureux et fonctionnel."
+    },
+    {
+      "id": "chambre",
+      "nom": "Chambre(s)",
+      "photos": [],
+      "statut": "en travaux",
+      "resume": "Un hébergement champêtre et bien équipé à termes."
     }
   ]
 }
