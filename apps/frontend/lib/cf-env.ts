@@ -1,5 +1,3 @@
-import { getRequestContext } from "@cloudflare/next-on-pages";
-
 export type CfEnv = {
   BOOKINGS_KV: KVNamespace;
   STRIPE_SECRET_KEY?: string;
@@ -14,26 +12,31 @@ declare global {
   var ENV: CfEnv | undefined;
 }
 
-let _cached: unknown;
+// lib/cf-env.ts
+let _cachedEnv: unknown;
 
+/**
+ * Récupère les bindings Cloudflare (env) au runtime.
+ * - En prod Pages/Workers : renvoie l'objet env (KV, D1, variables…)
+ * - En local / build : renvoie undefined (pas de bindings)
+ */
 export async function getCfEnv<T = Record<string, unknown>>(): Promise<T | undefined> {
-  if (_cached) return _cached as T;
+  if (_cachedEnv) return _cachedEnv as T;
+
   try {
-    // Cloudflare Pages/Workers (bindings)
-    const { env } = await import('cloudflare:workers');
-    _cached = env;
+    // ⚠️ Important : empêcher Webpack d'essayer de résoudre "cloudflare:workers" au build.
+    const mod = await (0, eval)('import("cloudflare:workers")');
+    const env = (mod as { env: unknown }).env;
+    _cachedEnv = env;
     return env as T;
   } catch {
-    // Local / Node sans bindings
+    // Local/Node : aucun binding disponible
     return undefined;
   }
 }
 
-export function isCloudflare(): boolean {
-  try {
-    getRequestContext();
-    return true;
-  } catch {
-    return false;
-  }
+/** Optionnel : petit helper si vous voulez différencier CF au runtime */
+export function isCloudflareRuntime(): boolean {
+  // Heuristique légère, ne bloque rien si false en local
+  return typeof globalThis !== "undefined" && "caches" in globalThis && !("process" in globalThis);
 }
