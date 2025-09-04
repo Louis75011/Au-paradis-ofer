@@ -1,48 +1,12 @@
 "use client";
-import BookingCalendar from "@/components/BookingCalendar";
-import { useState } from "react";
+// import BookingCalendar from "@/components/BookingCalendar";
+// import { useState } from "react";
 // import { useState } from "react";
 
 /** Formulaire de prise de contact simple — envoi vers l'API GraphQL du back. */
 export default function ContactPage() {
-  // const [status, setStatus] = useState<string | null>(null);
-  // async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-  //   const form = new FormData(e.currentTarget);
-  //   setStatus("Envoi en cours...");
-  //   // Mutation GraphQL minimale (demande de réservation)
-  //   const mutation = `
-  //     mutation RequestBooking($input: BookingInput!) {
-  //       requestBooking(input: $input) { id status }
-  //     }
-  //   `;
-  //   const res = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       query: mutation,
-  //       variables: {
-  //         input: {
-  //           fullName: form.get("name"),
-  //           email: form.get("email"),
-  //           date: form.get("date"),
-  //           sessionId: 1
-  //         }
-  //       }
-  //     })
-  //   });
+  // const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
-  //   const json = await res.json();
-  //   if (json.errors) {
-  //     setStatus("Erreur d’envoi. Merci de réessayer.");
-  //   } else {
-  //     setStatus("Merci ! Nous vous recontactons très vite.");
-  //     (e.target as HTMLFormElement).reset();
-  //   }
-  // }
-
-    const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  
   {
     /* <form className="mt-6 grid gap-4" onSubmit={onSubmit}> */
   }
@@ -83,7 +47,7 @@ export default function ContactPage() {
       </form>
 
       {/* Calendrier avec jours déjà réservés */}
-      <BookingCalendar onDateSelected={setSelectedDate} />
+      {/* <BookingCalendar onDateSelected={setSelectedDate} /> */}
     </div>
   );
 }
