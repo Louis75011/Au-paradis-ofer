@@ -37,7 +37,7 @@ export async function GET() {
             title: json.title ?? "Réservé",
             start: json.dateISO,
             allDay: true,
-            display: "background",        // <- littéral
+            display: "background" as const,
             color: json.status === "hold" ? "#fbbf24" : "#f87171",
           } satisfies CalendarEvent);      // <- vérification de forme
         }
@@ -56,7 +56,7 @@ export async function GET() {
         title: m.title ?? "Réservé",
         start: m.dateISO,
         allDay: true,
-        display: "background",
+        display: "background" as const,
         color: m.status === "hold" ? "#fbbf24" : "#f87171",
       } satisfies CalendarEvent);
     }
@@ -67,7 +67,7 @@ export async function GET() {
         title: m.title ?? "Réservé",
         start: m.dateISO,
         allDay: true,
-        display: "background",
+        display: "background" as const,
         color: m.status === "hold" ? "#fbbf24" : "#f87171",
       } satisfies CalendarEvent);
     }

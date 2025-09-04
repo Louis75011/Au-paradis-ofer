@@ -15,12 +15,12 @@ export default function TarifsPage() {
         <title>Tarifs</title>
       </Head>
 
-      <h1 className="mb-6 text-3xl font-bold text-brand-dark">
-        Tarifs des séances de médiation
-      </h1>
+      <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances de médiation</h1>
 
       <p>
-        Les modalités proposées sont les suivantes&nbsp;: <b>paiement</b> par carte pour les <b>réservations</b> de dernière minute, et par virement SEPA pour celles planifiées à l’avance. Vous pouvez réserver directement via le calendrier ou bien nous contacter.
+        Les modalités proposées sont les suivantes&nbsp;: <b>paiement</b> par carte pour les{" "}
+        <b>réservations</b> de dernière minute, et par virement SEPA pour celles planifiées à
+        l’avance. Vous pouvez réserver directement via le calendrier ou bien nous contacter.
       </p>
       <br />
 
@@ -61,10 +61,11 @@ export default function TarifsPage() {
         ))}
       </ul>
 
+      <br />
       <h1 className="mb-6 text-3xl font-bold text-brand-dark">
         Le calendrier, en temps réel, des réservations en ligne
       </h1>
-      
+
       {/* Calendrier avec jours déjà réservés */}
       <BookingCalendar onDateSelected={setSelectedDate} />
     </div>

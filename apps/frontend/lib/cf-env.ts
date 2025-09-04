@@ -16,27 +16,30 @@ declare global {
 let _cachedEnv: unknown;
 
 /**
- * Récupère les bindings Cloudflare (env) au runtime.
- * - En prod Pages/Workers : renvoie l'objet env (KV, D1, variables…)
- * - En local / build : renvoie undefined (pas de bindings)
+ * Récupère les bindings Cloudflare au runtime (Pages/Workers).
+ * Essaie d'abord `cloudflare:env` (nouveau), puis `cloudflare:workers` (ancien).
+ * En local ou si absent => undefined.
  */
 export async function getCfEnv<T = Record<string, unknown>>(): Promise<T | undefined> {
   if (_cachedEnv) return _cachedEnv as T;
 
+  // Empêche Webpack/Next de résoudre au build
+  const dynImport = (spec: string) => (0, eval)(`import(${JSON.stringify(spec)})`);
+
   try {
-    // ⚠️ Important : empêcher Webpack d'essayer de résoudre "cloudflare:workers" au build.
-    const mod = await (0, eval)('import("cloudflare:workers")');
+    const mod = await dynImport("cloudflare:env"); // ← priorité au nouveau
     const env = (mod as { env: unknown }).env;
     _cachedEnv = env;
     return env as T;
   } catch {
-    // Local/Node : aucun binding disponible
-    return undefined;
+    // ignore
   }
-}
-
-/** Optionnel : petit helper si vous voulez différencier CF au runtime */
-export function isCloudflareRuntime(): boolean {
-  // Heuristique légère, ne bloque rien si false en local
-  return typeof globalThis !== "undefined" && "caches" in globalThis && !("process" in globalThis);
+  try {
+    const mod = await dynImport("cloudflare:workers"); // ← fallback ancien
+    const env = (mod as { env: unknown }).env;
+    _cachedEnv = env;
+    return env as T;
+  } catch {
+    return undefined; // local / pas de bindings
+  }
 }
