@@ -44,7 +44,7 @@ export default function PageInstallations() {
         >
           <div className="grid gap-5 md:grid-cols-[minmax(280px,520px),1fr] items-start">
             {manege.photo && (
-              <figure className="md:sticky md:top-20">
+              <figure className="md:top-20">
                 <Image
                   src={manege.photo}
                   alt={manege.nom}
