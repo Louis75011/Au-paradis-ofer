@@ -46,11 +46,11 @@
       "resume": "Un point d’accueil chaleureux et fonctionnel."
     },
     {
-      "id": "chambre",
-      "nom": "Chambre(s)",
+      "id": "gite",
+      "nom": "Gîte",
       "photos": [],
       "statut": "en travaux",
-      "resume": "Un hébergement champêtre et bien équipé à termes."
+      "resume": "Un hébergement champêtre et bien équipé à terme."
     }
   ]
 }

@@ -5,7 +5,7 @@
     "type": "Poney",
     "age": 7,
     "date_anniversaire": "1er janvier 2018",
-    "race": "Ponette",
+    "race": "ONC",
     "photo": "/images/cheval-indy.jpg",
     "resume": "Voici Indy, la plus jeune qui a 7 ans. Elle a un caractère très calme et aime qu’on s’occupe d’elle. Elle apprécie la présence d’adultes mais plus particulièrement des enfants qu’elle côtoie depuis toute petite. Elle n’a peur de rien !"
   },
@@ -15,7 +15,7 @@
     "type": "Poney",
     "age": 21,
     "date_anniversaire": "1er janvier 2003",
-    "race": "Ponette",
+    "race": "ONC",
     "photo": "/images/cheval-patchouli.jpg",
     "resume": "Voici Patchouli, notre petite mamie, elle a 21 ans. Elle a toujours été au contact d’humain, ainsi que de personnes en situation de handicap depuis son plus jeune âge. De ce fait elle est très douce avec tout le monde, mais elle s’est tout de même affirmer son caractère avec les autres chevaux."
   },

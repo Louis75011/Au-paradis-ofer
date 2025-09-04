@@ -19,7 +19,7 @@ html, body { background: var(--color-brand-cream); }
 .card { @apply rounded-2xl text-white shadow-[var(--shadow-soft)]; }
 
 /* Cartes interactives : survol doux, retour fluide*/
-/* à termes remplacer par hover-button */
+/* à terme remplacer par hover-button */
 .hover-card {
    will-change: transform; /* Indique au navigateur qu'on va animer transform - meilleures perfs */
   transition: transform 260ms ease, box-shadow 260ms ease, opacity 200ms ease;

@@ -47,7 +47,7 @@ export default function HomePage() {
         <SectionCard title="Infos & réservation">
           <ul className="list-disc pl-5">
             <li>Contactez-nous pour choisir la formule qui vous convient.</li>
-          <li>À termes, vous pourriez probablement réserver en ligne selon notre agenda !</li>
+          <li>À terme, vous pourriez probablement réserver en ligne selon notre agenda !</li>
           </ul>
         </SectionCard>
       </section>
