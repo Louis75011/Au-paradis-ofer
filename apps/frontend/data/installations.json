@@ -17,7 +17,7 @@
         "/images/alle-praticable-pour-tous01.jpg",
         "/images/alle-praticable-pour-tous02.jpg"
       ],
-      "statut": "en travaux",
+      "statut": "disponible",
       "resume": "Chemin d’accès stabilisé et pensé pour la sécurité."
     },
     {
@@ -28,14 +28,14 @@
         "/images/sellerie02.jpg",
         "/images/sellerie03.jpg"
       ],
-      "statut": "à venir",
+      "statut": "disponible",
       "resume": "Rangements, selles et harnachements organisés."
     },
     {
       "id": "aire-pansage",
       "nom": "Aire de pansage",
       "photos": ["/images/aire-de-pansage.jpg"],
-      "statut": "à venir",
+      "statut": "disponible",
       "resume": "Zone dédiée à la préparation et aux soins."
     },
     {
@@ -43,7 +43,7 @@
       "nom": "Accueil",
       "photos": [],
       "statut": "en travaux bien avancés",
-      "resume": "Un point d’accueil chaleureux et fonctionnel."
+      "resume": "Un point d’accueil chaleureux bientôt fonctionnel."
     },
     {
       "id": "gite",

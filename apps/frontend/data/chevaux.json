@@ -17,7 +17,7 @@
     "date_anniversaire": "1er janvier 2003",
     "race": "ONC",
     "photo": "/images/cheval-patchouli.jpg",
-    "resume": "Voici Patchouli, notre petite mamie, elle a 21 ans. Elle a toujours été au contact d’humain, ainsi que de personnes en situation de handicap depuis son plus jeune âge. De ce fait elle est très douce avec tout le monde, mais elle s’est tout de même affirmer son caractère avec les autres chevaux."
+    "resume": "Voici Patchouli, notre petite mamie, elle a 21 ans. Elle a toujours été au contact d’humains, ainsi que de personnes en situation de handicap depuis son plus jeune âge. De ce fait elle est très douce avec tout le monde, mais elle sait tout de même affirmer son caractère avec les autres chevaux."
   },
   {
     "id": "poly",
@@ -27,7 +27,7 @@
     "date_anniversaire": "22 avril 2012",
     "race": "Shetland",
     "photo": "/images/cheval-poly.jpg",
-    "resume": "Poly est notre plus petit Poney, il a 13 ans. Avec sa petite taille et sa bouille craquante : comment ne pas résister ? Mais ne vous fiez pas à son apparence, car il sait très bien ce qu’il veut. Il a son caractère, mais il adore la présence d’enfants avec lesquels il aime s’amuser."
+    "resume": "Poly est notre plus petit poney, il a 13 ans. Avec sa petite taille et sa bouille craquante : comment résister ? Mais ne vous fiez pas à son apparence, car il sait très bien ce qu’il veut. Il a son caractère, mais il adore la présence d’enfants avec lesquels il aime s’amuser."
   },
   {
     "id": "rodeo",
@@ -37,7 +37,7 @@
     "date_anniversaire": "30 avril 2005",
     "race": "Haflinger",
     "photo": "/images/cheval-rodeo.jpg",
-    "resume": "Voici Rodéo, il a 20 ans. Nous l’avons eu au Grand Refuge à la SPA de Pervenchères. Il a eu un passé compliqué, mais depuis qu’il nous a rejoint il profite pleinement. C’est un Poney avec un caractère en or. Il est très doux que ce soit avec les enfants ou les adultes. Il recherche tout le temps le contact humain, peut-être parce qu’il en a toujours manqué auparavant, c’est un vrai pot de colle ! C’est également un Poney très calme."
+    "resume": "Voici Rodéo, il a 20 ans. Nous l’avons récupéré au Grand Refuge à la SPA de Pervenchères. Il a eu un passé compliqué, mais depuis qu’il nous a rejoins il profite pleinement. C’est un poney avec un caractère en or. Il est très doux que ce soit avec les enfants ou les adultes. Il recherche tout le temps le contact humain, peut-être parce qu’il en a toujours manqué auparavant, c’est un vrai pot de colle ! C’est également un poney très calme."
   },
   {
     "id": "sunny",
@@ -47,6 +47,6 @@
     "date_anniversaire": "25 août 2006",
     "race": "Anglo-arabe Selle français",
     "photo": "/images/cheval-sunny.jpg",
-    "resume": "Sunny est le seul cheval de par sa plus grande taille, il a 19 ans. C’est le 1er cheval que nous ayons eux, nous l’avons connu depuis qu’il avait 6 ans. Il est très attentif à tout ce qui l’entourent et c’est un cheval d’une très grande intelligence qui retient vite. Il aime la présence de tout le monde."
+    "resume": "Sunny est le seul cheval de par sa plus grande taille, il a 19 ans. C’est le 1er cheval que nous ayons eu, nous l’avons connu ses 6 ans. Il est très attentif à tout ce qui l’entoure et c’est un cheval d’une très grande intelligence qui retient vite. Il aime la présence de tout le monde."
   }
 ]
