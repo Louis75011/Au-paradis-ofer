@@ -1,8 +1,8 @@
 export const runtime = "edge";
 
 import { getCfEnv } from "@/lib/cf-env";
+import { mockStore } from "../reservation/route";
 
-// Même type que dans reservation
 type BookingBody = {
   dateISO: string;
   status: "reserved" | "hold";
@@ -12,20 +12,16 @@ type BookingBody = {
 type CalendarEvent = {
   id: string;
   title: string;
-  start: string; // ISO
+  start: string;
   end?: string;
   allDay?: boolean;
   display?: "auto" | "background" | "inverse-background" | "none";
   color?: string;
 };
 
-// --- partage du mockStore avec reservation ---
-import { mockStore } from "../reservation/route"; 
-// ⬆️ vous devez ajouter `export const mockStore = {}` dans reservation/route.ts
-
 export async function GET() {
   try {
-    const env = getCfEnv<{ BOOKINGS_KV: KVNamespace }>();
+    const env = await getCfEnv<{ BOOKINGS_KV: KVNamespace }>();
 
     // --- Cas Cloudflare KV ---
     if (env?.BOOKINGS_KV) {
@@ -41,9 +37,9 @@ export async function GET() {
             title: json.title ?? "Réservé",
             start: json.dateISO,
             allDay: true,
-            display: "background",
+            display: "background",        // <- littéral
             color: json.status === "hold" ? "#fbbf24" : "#f87171",
-          });
+          } satisfies CalendarEvent);      // <- vérification de forme
         }
       }
 
@@ -54,7 +50,6 @@ export async function GET() {
     const mockFile = (await import("@/data/mock-bookings.json")).default as BookingBody[];
     const events: CalendarEvent[] = [];
 
-    // depuis le fichier
     for (const [i, m] of mockFile.entries()) {
       events.push({
         id: `mockfile:${i}`,
@@ -63,10 +58,9 @@ export async function GET() {
         allDay: true,
         display: "background",
         color: m.status === "hold" ? "#fbbf24" : "#f87171",
-      });
+      } satisfies CalendarEvent);
     }
 
-    // depuis le mockStore (alimenté par POST /api/reservation)
     for (const [dateISO, m] of Object.entries(mockStore)) {
       events.push({
         id: `mockmem:${dateISO}`,
@@ -75,7 +69,7 @@ export async function GET() {
         allDay: true,
         display: "background",
         color: m.status === "hold" ? "#fbbf24" : "#f87171",
-      });
+      } satisfies CalendarEvent);
     }
 
     return Response.json({ events });

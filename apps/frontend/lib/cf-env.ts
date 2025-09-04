@@ -14,18 +14,19 @@ declare global {
   var ENV: CfEnv | undefined;
 }
 
-export function getCfEnv<TEnv extends Record<string, unknown> = CfEnv>(): TEnv | undefined {
+let _cached: unknown;
+
+export async function getCfEnv<T = Record<string, unknown>>(): Promise<T | undefined> {
+  if (_cached) return _cached as T;
   try {
-    if (typeof globalThis !== "undefined" && globalThis.__env) {
-      return globalThis.__env as unknown as TEnv;
-    }
-    if (typeof globalThis !== "undefined" && globalThis.ENV) {
-      return globalThis.ENV as unknown as TEnv;
-    }
+    // Cloudflare Pages/Workers (bindings)
+    const { env } = await import('cloudflare:workers');
+    _cached = env;
+    return env as T;
   } catch {
-    // silencieux
+    // Local / Node sans bindings
+    return undefined;
   }
-  return undefined; // en local "next start", on tombera sur le mock
 }
 
 export function isCloudflare(): boolean {
