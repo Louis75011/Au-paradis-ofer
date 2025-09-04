@@ -60,6 +60,10 @@ export default function TarifsPage() {
           </li>
         ))}
       </ul>
+
+      <h1 className="mb-6 text-3xl font-bold text-brand-dark">
+        Le calendrier, en temps réel, des réservations en ligne
+      </h1>
       
       {/* Calendrier avec jours déjà réservés */}
       <BookingCalendar onDateSelected={setSelectedDate} />
