@@ -34,12 +34,23 @@ pnpm install
 # 3) rebuild Next
 pnpm build
 
-# 4) redémarrer l’app (et recharger les vars si vous en avez modifié)
-pm2 restart au-paradis-ofer --update-env
+...
 
-# 5) contrôler
-pm2 ls
-curl -I https://au-paradis-ofer.fr
+Déployer au quotidien
+
+cd /root/ && ls
+
+Préprod :
+cd /root/apps/Au-paradis-ofer-preprod
+bash /root/deploy-preprod.sh preprod
+pm2 status
+curl -I https://preprod.au-paradis-ofer.fr/
+
+Prod :
+cd /root/apps/Au-paradis-ofer
+bash /root/deploy.sh main
+pm2 status
+curl -I https://au-paradis-ofer.fr/
 -->
 
 <!-- root@vps-e4eb1efc:~/apps/Au-paradis-ofer-preprod/apps/frontend# nano /etc/nginx/sites-available/preprod.au-paradis-ofer.fr
