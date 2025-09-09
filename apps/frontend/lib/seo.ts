@@ -1,7 +1,6 @@
 // Petites métadonnées réutilisables
 export const site = {
   name: "Au Paradis O'Fer",
-  url: "https://au-paradis-ofer.vercel.app",
-  description:
-    "Centre d’accueil en zoothérapie. Séances de médiation équine dans un cadre familial et verdoyant.",
-};
+  description: "Centre d’accueil en zoothérapie dans un cadre familial, apaisant et verdoyant.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://au-paradis-ofer.fr",
+} as const;

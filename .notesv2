@@ -1,5 +1,43 @@
 ### Scripts de confort (dev)
 
+### SUR LE VPS
+
+<!-- Prod : au-paradis-ofer.fr → Nginx → 127.0.0.1:3000 → PM2 app au-paradis-ofer
+Préprod : preprod.au-paradis-ofer.fr → Nginx → 127.0.0.1:3001 → PM2 app au-paradis-ofer-preprod -->
+
+<!-- /etc/nginx/sites-available/au-paradis-ofer.fr -->
+
+<!-- ssh root@51.68.230.93
+# ou
+ssh root@vps-e4eb1efc.vps.ovh.net
+
+pm2 ls
+systemctl status nginx --no-pager -l
+curl -I https://au-paradis-ofer.fr 
+
+# 0) aller au projet
+cd /root/apps/Au-paradis-ofer
+
+# 1) récupérer les changements
+git pull origin main
+
+# 2) installer dépendances si besoin (monorepo)
+cd apps/frontend
+pnpm install
+
+# 3) rebuild Next
+pnpm build
+
+# 4) redémarrer l’app (et recharger les vars si vous en avez modifié)
+pm2 restart au-paradis-ofer --update-env
+
+# 5) contrôler
+pm2 ls
+curl -I https://au-paradis-ofer.fr
+-->
+
+### VRAC paiement & calendrier
+
 <!-- Stripe paiement carte et SEPA, FullCalendar : calendrier géré et réservations, Cloudflare test et deploiement avant hébergeur -->
 
 <!-- Google Agenda (pour éviter les doubles réservations) : Settings → Calendars → connectez votre compte au.paradis.o.fer@gmail.com. -->

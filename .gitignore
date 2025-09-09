@@ -27,6 +27,7 @@ yarn-error.log*
 .env
 .env.*
 apps/frontend/.env.local
+apps/frontend/.env.production
 apps/api/.env
 
 # Coverage & tests
@@ -40,3 +41,9 @@ Thumbs.db
 
 # Notes perso
 _notes/
+.notes/
+.notesv2/
+
+# ecosystem
+apps/frontend/ecosystem.config.cjs
+apps/frontend/ecosystem.preprod.cjs

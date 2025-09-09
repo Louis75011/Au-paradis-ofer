@@ -9,12 +9,20 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const caveat = Caveat({ subsets: ["latin"], weight: ["400","700"], variable: "--font-caveat" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url), // <<< essentiel en prod
   title: { default: site.name, template: `%s • ${site.name}` },
   description: site.description,
   openGraph: {
-    title: site.name, description: site.description, url: site.url, siteName: site.name,
-    images: [{ url: "/images/au-paradis-ofer-02.jpg", width: 1200, height: 630, alt: "Cheval en séance"}],
-    locale: "fr_FR", type: "website"
+    title: site.name,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    images: [
+      // Chemin relatif -> sera résolu avec metadataBase :
+      { url: "/images/au-paradis-ofer-02.jpg", width: 1200, height: 630, alt: "Cheval en séance" }
+    ],
+    locale: "fr_FR",
+    type: "website"
   },
   icons: { icon: "/favicon.ico" }
 };

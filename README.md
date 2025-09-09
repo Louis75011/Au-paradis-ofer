@@ -18,6 +18,7 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 - [Next.js](https://nextjs.org/) (React + TypeScript + côté serveur & routes api)
 - [TailwindCSS](https://tailwindcss.com/) (design rapide et responsive)
 - [pnpm](https://pnpm.io/) (gestionnaire de paquets)
+- [debianv12 & Powershell](git, terminaux, déploiement)
 
 ---
 
@@ -26,15 +27,13 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 ```
 
 /au-paradis-ofer
-├── frontend/        # Next.js (React/TS) + TailwindCSS
+├── frontend/        # Next.js (React/TS) + TailwindCSS + Storybook
 │   ├── public/      # images, icônes statiques
 │   ├── src/         # pages, composants, hooks
 │   └── package.json
 ├── api/             # FastAPI + GraphQL backend
 │   ├── app/         # routes, schémas, modèles
 │   ├── alembic/     # migrations
-│   └── pyproject.toml
-│
 └── README.md
 
 ```
