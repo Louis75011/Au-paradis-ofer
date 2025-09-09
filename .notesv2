@@ -7,6 +7,12 @@ Préprod : preprod.au-paradis-ofer.fr → Nginx → 127.0.0.1:3001 → PM2 app a
 
 <!-- /etc/nginx/sites-available/au-paradis-ofer.fr -->
 
+<!-- /root/deploy.sh
+/root/deploy.sh main
+/root/deploy.sh preprod
+pm2 startup
+pm2 save -->
+
 <!-- ssh root@51.68.230.93
 # ou
 ssh root@vps-e4eb1efc.vps.ovh.net
@@ -35,6 +41,9 @@ pm2 restart au-paradis-ofer --update-env
 pm2 ls
 curl -I https://au-paradis-ofer.fr
 -->
+
+<!-- root@vps-e4eb1efc:~/apps/Au-paradis-ofer-preprod/apps/frontend# nano /etc/nginx/sites-available/preprod.au-paradis-ofer.fr
+root@vps-e4eb1efc:~/apps/Au-paradis-ofer-preprod/apps/frontend# nano /etc/nginx/sites-available/au-paradis-ofer.fr -->
 
 ### VRAC paiement & calendrier
 

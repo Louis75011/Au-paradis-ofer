@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: "standalone",
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
