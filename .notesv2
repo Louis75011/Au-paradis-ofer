@@ -13,7 +13,8 @@ Préprod : preprod.au-paradis-ofer.fr → Nginx → 127.0.0.1:3001 → PM2 app a
 pm2 startup
 pm2 save -->
 
-<!-- ssh root@51.68.230.93
+<!-- wsl -d Debian12
+ssh root@51.68.230.93
 # ou
 ssh root@vps-e4eb1efc.vps.ovh.net
 
