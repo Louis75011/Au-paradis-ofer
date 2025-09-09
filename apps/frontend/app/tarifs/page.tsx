@@ -4,8 +4,7 @@ import { useState } from "react";
 import Head from "next/head";
 import tarifs from "@/data/tarifs.json";
 import BookingCalendar from "@/components/BookingCalendar";
-
-// import ReserveButtons from "@/components/ReserveButtons"; // ⬅️ conservé volontairement (commenté)
+import ReserveButtons from "@/components/ReserveButtons"; // ⬅️ conservé volontairement (commenté)
 
 export default function TarifsPage() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -19,11 +18,15 @@ export default function TarifsPage() {
 
       <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances de médiation</h1>
 
-      {/* <p>
-        Les modalités proposées sont les suivantes&nbsp;: <b>paiement</b> par carte pour les{" "}
-        <b>réservations</b> de dernière minute, et par virement SEPA pour celles planifiées à
-        l’avance. Vous pouvez réserver directement via le calendrier ou bien nous contacter.
-      </p> */}
+      <p>
+        Le paiement peut être effectué par <b>carte bancaire</b> pour une réservation immédiate ou
+        de dernière minute.
+        Nous vous invitons toutefois à privilégier le <b>virement SEPA</b>{" "}
+        lorsque la réservation est prévue à l’avance (environ cinq jours), et/ou à nous contacter
+        directement par courriel afin de convenir du moment exact et de vous enregistrer en tant que
+        personne ayant réglé la prestation. Merci d&apos;avance !
+      </p>
+      <br></br>
 
       {/* Mise en page responsive : 1 colonne mobile, 2 colonnes desktop */}
       <div className="grid gap-8 lg:grid-cols-2">
@@ -57,8 +60,6 @@ export default function TarifsPage() {
               <p className="text-sm opacity-80">Durée : {t.duree}</p>
               <p className="mt-2 text-lg font-bold">{t.prix} €</p>
 
-              {/* --- Réservation (conservé en commentaire) --- */}
-              {/*
               <ReserveButtons
                 dateISO={selectedDate ?? undefined}
                 title={t.intitule}
@@ -67,10 +68,10 @@ export default function TarifsPage() {
               />
               {selectedDate && (
                 <p className="mt-2 text-sm opacity-70">
-                  Date sélectionnée : <strong>{new Date(selectedDate).toLocaleDateString('fr-FR')}</strong>
+                  Date sélectionnée :{" "}
+                  <strong>{new Date(selectedDate).toLocaleDateString("fr-FR")}</strong>
                 </p>
               )}
-              */}
             </li>
           ))}
         </ul>

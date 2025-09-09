@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { useRouter } from "next/navigation";
 
 type Props = {
   dateISO?: string | null;
@@ -11,6 +12,7 @@ type Props = {
 
 export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: Props) {
   const [pending, startTransition] = useTransition();
+  const router = useRouter();
 
   async function startCheckout(kind: "card" | "sepa") {
     const res = await fetch("/api/checkout", {
@@ -28,9 +30,10 @@ export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: 
   }
 
   return (
-    <div className="mt-4 flex gap-2">
+    <div className="mt-4 flex flex-wrap gap-2">
+      {/* Paiement Carte */}
       <button
-        className="btn btn-primary hover-button bg-brand-dark disabled:opacity-60"
+        className="btn btn-primary hover-button bg-brand-dark text-white disabled:opacity-60"
         disabled={pending}
         onClick={() => startTransition(() => startCheckout("card"))}
         aria-label="Payer par carte (réservation immédiate)"
@@ -38,6 +41,8 @@ export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: 
       >
         Carte
       </button>
+
+      {/* Paiement SEPA */}
       <button
         className="btn btn-primary hover-button bg-brand-light text-white disabled:opacity-60"
         disabled={pending}
@@ -46,6 +51,16 @@ export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: 
         title={dateISO ? `Payer par SEPA pour le ${dateISO}` : undefined}
       >
         SEPA
+      </button>
+
+      {/* Contact direct */}
+      <button
+        className="btn hover-button bg-brand-cream text-black"
+        onClick={() => router.push("/contact")}
+        aria-label="Nous contacter directement pour réserver"
+        title="Nous contacter directement pour réserver"
+      >
+        Contact
       </button>
     </div>
   );
