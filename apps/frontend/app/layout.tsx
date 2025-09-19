@@ -33,7 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${inter.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col bg-brand-cream text-slate-900">
-        {/* Lien d'évitement pour accessibilité clavier */}
         <a href="#contenu" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 bg-white rounded px-3 py-2 shadow">
           Aller au contenu
         </a>
