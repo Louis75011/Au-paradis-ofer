@@ -16,7 +16,7 @@
 html, body { background: var(--color-brand-cream); }
 /* Titres génériques */
 h1 {
-  @apply text-2xl md:text-4xl font-bold text-[--color-brand-dark] mb-4;
+  @apply text-xl md:text-4xl font-bold text-[--color-brand-dark] mb-4;
 }
 h2 {
   @apply text-xl md:text-3xl font-semibold text-[--color-brand-light] mt-8 mb-3;

@@ -18,7 +18,7 @@ export default function SectionCard({
     <section
       className={`bg-brand-sky card p-6 border border-black rounded-2xl h-full flex flex-col ${className}`}
     >
-      <h2 className="mb-3 text-lg font-semibold">{title}</h2>
+      <h3 className="mb-4 text-lg font-semibold">{title}</h3>
       {/* ✅ le corps prend toute la hauteur disponible */}
       <div className={`leading-relaxed flex-1 min-h-0 ${bodyClassName}`}>{children}</div>
     </section>
