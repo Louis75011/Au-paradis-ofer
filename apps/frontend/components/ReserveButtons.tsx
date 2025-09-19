@@ -3,14 +3,19 @@
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  dateISO?: string | null;
+type ReserveButtonsProps = {
+  dateISO?: string;
   title: string;
   amountEuro: number;
-  tarifId: string | number; // accepte les deux
+  tarifId: number;
 };
 
-export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: Props) {
+export default function ReserveButtons({
+  dateISO,
+  title,
+  amountEuro,
+  tarifId,
+}: ReserveButtonsProps) {
   const [pending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -31,7 +36,7 @@ export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: 
 
   return (
     <div className="mt-4 flex flex-wrap gap-2">
-      {/* Paiement Carte */}
+      {/* Paiements Carte & SEPA */}
       <button
         className="btn btn-primary hover-button bg-brand-dark text-white disabled:opacity-60"
         disabled={pending}
@@ -42,7 +47,12 @@ export default function ReserveButtons({ dateISO, title, amountEuro, tarifId }: 
         Carte
       </button>
 
-      {/* Paiement SEPA */}
+      {/* <div>
+      <button className="btn btn-primary">
+        Réserver {title} – {amountEuro}€
+      </button>
+    </div> */}
+
       <button
         className="btn btn-primary hover-button bg-brand-light text-white disabled:opacity-60"
         disabled={pending}

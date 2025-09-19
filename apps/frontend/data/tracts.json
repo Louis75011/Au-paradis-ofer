@@ -6,8 +6,24 @@
     "Ambiance chaleureuse avec chevaux et poneys"
   ],
   "coordonnees": {
+    "type": "Médiation animale",
     "tel": "06 48 34 22 53",
     "mail": "au.paradis.o.fer@gmail.com",
     "adresse": "15 Rue de Royon, 62310 Sains-lès-Fressin"
+  },
+  "legales": {
+    "nom": "Au Paradis O’Fer",
+    "forme": "Association loi 1901",
+    "capital": "À définir",
+    "siren": "À définir",
+    "adresse": "15 Rue de Royon, 62310 Sains-lès-Fressin",
+    "telephone": "06 48 34 22 53",
+    "mail": "au.paradis.o.fer@gmail.com",
+    "directeurPublication": "Louis Rouanet",
+    "hebergeur": {
+      "nom": "OVHcloud",
+      "adresse": "2 rue Kellermann – 59100 Roubaix – France",
+      "telephone": "1007"
+    }
   }
 }

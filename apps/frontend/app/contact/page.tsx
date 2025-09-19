@@ -5,6 +5,7 @@ import { useState } from "react";
 /** Formulaire de prise de contact simple — envoi vers l'API GraphQL du back. */
 export default function ContactPage() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
   {
     /* <form className="mt-6 grid gap-4" onSubmit={onSubmit}> */
   }
@@ -47,7 +48,15 @@ export default function ContactPage() {
       {/* Calendrier avec jours déjà réservés */}
       <br />
       <h1 className="text-3xl font-bold text-brand-dark">Calendrier des réservations à venir</h1>
-      <BookingCalendar onDateSelected={setSelectedDate} />
-    </div>
+        {/* Colonne droite : calendrier */}
+        <div>
+          <h2 className="mb-3 text-xl font-semibold">Dates disponibles</h2>
+          <BookingCalendar onDateSelected={setSelectedDate} />
+          <p className="mt-2 text-sm opacity-70">
+            Les créneaux déjà réservés apparaissent dans le calendrier.
+            {/* Cliquez sur un jour pour présélectionner une date. */}
+          </p>
+        </div>
+      </div>
   );
 }

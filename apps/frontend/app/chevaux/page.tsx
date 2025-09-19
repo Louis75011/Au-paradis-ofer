@@ -23,7 +23,7 @@ export default function PageChevaux() {
   const chevaux = chevauxData as Cheval[];
 
   return (
-    <main className="page space-y-6">
+    <main className="page mx-auto max-w-7xl px-4 md:px-6 space-y-6">
       <header>
         <h1 className="text-3xl font-semibold">Nos chevaux</h1>
         <p className="mt-2 opacity-90">
@@ -32,23 +32,31 @@ export default function PageChevaux() {
         </p>
       </header>
 
-      {chevaux.map((c) => (
-        <SectionCard key={c.id} title={c.nom}>
-          {/* Image à gauche, texte à droite */}
-          <div className="flex flex-col gap-5 md:flex-row md:items-start">
-            <figure className="md:w-[550px] md:shrink-0 rounded-xl overflow-hidden">
-              <Image
-                src={c.photo}
-                alt={`${c.nom} — ${c.type}`}
-                width={1200}
-                height={900}
-                className="w-full aspect-[4/3] object-cover"
-                priority={false}
-              />
-            </figure>
+      {/* ✅ Grille centrée, enfants étirés et rangées égalisées */}
+      <div className="mx-auto w-full max-w-7xl grid gap-6 md:grid-cols-2 items-stretch auto-rows-auto md:auto-rows-fr">
+        {chevaux.map((c) => (
+          <SectionCard key={c.id} title={c.nom} className="h-full">
+            <div
+              className="
+          grid h-full min-h-0 md:min-h-[600px]
+          grid-rows-[auto_1fr_auto] gap-4
+        "
+            >
+              <figure className="rounded-xl overflow-hidden">
+                <Image
+                  src={c.photo}
+                  alt={`${c.nom} — ${c.type}`}
+                  width={1200}
+                  height={900}
+                  className="w-full aspect-[4/3] object-cover"
+                  priority={false}
+                />
+              </figure>
 
-            <div className="min-w-0 space-y-3">
-              <p className="opacity-90">{c.resume}</p>
+              <div className="min-w-0 min-h-0 space-y-3">
+                {/* Mobile: texte libre ; Desktop: vous pouvez borner si souhaité */}
+                <p className="opacity-90 md:line-clamp-6">{c.resume}</p>
+              </div>
 
               <ul className="text-sm opacity-80 space-y-1">
                 <li>
@@ -60,14 +68,11 @@ export default function PageChevaux() {
                 <li>
                   <strong>Date de naissance :</strong> {c.date_anniversaire}
                 </li>
-                {/* <li>
-            <strong>Âge :</strong> {c.age} ans
-          </li> */}
               </ul>
             </div>
-          </div>
-        </SectionCard>
-      ))}
+          </SectionCard>
+        ))}
+      </div>
     </main>
   );
 }

@@ -4,6 +4,8 @@ import { site } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Inter, Caveat } from "next/font/google";
+import CookiePrefs from "@/components/CookiePrefs";
+import CookieBanner from "@/components/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const caveat = Caveat({ subsets: ["latin"], weight: ["400","700"], variable: "--font-caveat" });
@@ -38,6 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="contenu" className="flex-1 relative">{children}</main>
         <Footer />
+        {/* Montez les composants Cookies à la fin du body */}
+        <CookiePrefs />
+        <CookieBanner />
       </body>
     </html>
   );

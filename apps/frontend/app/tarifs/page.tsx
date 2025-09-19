@@ -19,12 +19,13 @@ export default function TarifsPage() {
       <h1 className="mb-6 text-3xl font-bold text-brand-dark">Tarifs des séances de médiation</h1>
 
       <p>
-        Le paiement peut être effectué par <b>carte bancaire</b> pour une réservation immédiate ou
+        Nous vous invitons à entrer en contact avec nous directement par courriel afin de convenir du moment exact du rendez-vous. Merci d&apos;avance !
+        {/* Le paiement peut être effectué par <b>carte bancaire</b> pour une réservation immédiate ou
         de dernière minute.
         Nous vous invitons toutefois à privilégier le <b>virement SEPA</b>{" "}
         lorsque la réservation est prévue à l’avance (environ cinq jours), et/ou à nous contacter
         directement par courriel afin de convenir du moment exact et de vous enregistrer en tant que
-        personne ayant réglé la prestation. Merci d&apos;avance !
+        personne ayant réglé la prestation. Merci d&apos;avance ! */}
       </p>
       <br></br>
 
@@ -78,7 +79,7 @@ export default function TarifsPage() {
 
         {/* Colonne droite : calendrier */}
         <div>
-          <h2 className="mb-3 text-xl font-semibold">Choisir une date</h2>
+          <h2 className="mb-3 text-xl font-semibold">Dates disponibles</h2>
           <BookingCalendar onDateSelected={setSelectedDate} />
           <p className="mt-2 text-sm opacity-70">
             Les créneaux déjà réservés apparaissent dans le calendrier.

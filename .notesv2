@@ -1,5 +1,24 @@
 ### Scripts de confort (dev)
 
+### A voir
+
+<!-- Msg amis APO visitez parlez du gens du nord ou de passage.
+RGPD/Cookies, paiements Stripe GITE (désactiver chevaux) calendriers pour Gîte et CHEVAUX. -->
+
+<!-- vrai paramètre paiement carte + SEPA. Agenda Gîte à part et complet
+https://search.google.com/search-console/welcome?utm_source=wmx&utm_medium=deprecation-pane&utm_content=home#utm_source=fr-wmxmsg&utm_medium=wmxmsg&utm_campaign=bm&authuser=0 -->
+
+<!-- ssh ovh-vps -->
+<!-- git push vps-preprod preprod -->
+
+### Adresses
+
+<!-- http://localhost:3000/
+https://preprod.au-paradis-ofer.fr
+https://au-paradis-ofer.fr
+https://github.com/Louis75011/Au-paradis-ofer/tree/preprod
+https://dashboard.stripe.com/test/dashboard -->
+
 ### SUR LE VPS
 
 <!-- Prod : au-paradis-ofer.fr → Nginx → 127.0.0.1:3000 → PM2 app au-paradis-ofer
@@ -20,7 +39,7 @@ ssh root@vps-e4eb1efc.vps.ovh.net
 
 pm2 ls
 systemctl status nginx --no-pager -l
-curl -I https://au-paradis-ofer.fr 
+curl -I https://au-paradis-ofer.fr
 
 # 0) aller au projet
 cd /root/apps/Au-paradis-ofer
