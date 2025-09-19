@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="contenu" className="flex-1 relative">{children}</main>
         <Footer />
-        {/* Montez les composants Cookies à la fin du body */}
+        {/* Montez les composants Cookies en fin de body */}
         <CookiePrefs />
         <CookieBanner />
       </body>
