@@ -9,7 +9,7 @@ RGPD/Cookies, paiements Stripe GITE (désactiver chevaux) calendriers pour Gîte
 https://search.google.com/search-console/welcome?utm_source=wmx&utm_medium=deprecation-pane&utm_content=home#utm_source=fr-wmxmsg&utm_medium=wmxmsg&utm_campaign=bm&authuser=0 -->
 
 <!-- ssh ovh-vps -->
-<!-- git add . ; git commit -m "h2 to h3" ; git p ; git push vps-preprod preprod -->
+<!-- git add . ; git commit -m "package preprod et prod" ; git p ; git push origin preprod -->
 
 ### Adresses
 

@@ -1,12 +1,15 @@
 "use client";
+
 import { useMemo, useRef, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
+import { DateSelectArg, EventInput } from "@fullcalendar/core"; // les deux viennent de core
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { addMinutes, differenceInCalendarDays, formatISO } from "date-fns";
+import { differenceInCalendarDays, formatISO } from "date-fns"; // addMinutes à termes si besoin
 
-// Calendrier des jours lors de la réservation choisie
+const SEPA_MIN_DAYS = Number(process.env.NEXT_PUBLIC_SEPA_MIN_DAYS ?? 5);
+
 type Event = {
   id: string;
   title: string;
@@ -14,14 +17,10 @@ type Event = {
   end: string;
 };
 
-const SEPA_MIN_DAYS = Number(process.env.NEXT_PUBLIC_SEPA_MIN_DAYS ?? 5);
-
-export default function BookingWidget() {
+export default function BookingWidget({ offer }: { offer: "gite_basic" | "gite_plus" }) {
   const [selectedISO, setSelectedISO] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const calRef = useRef<FullCalendar | null>(null);
-//   const calendarApi = calRef.current?.getApi(); // Accès à l'api
-//   calendarApi?.next(); // exemple : passer au mois suivant
 
   const canUseSEPA = useMemo(() => {
     if (!selectedISO) return false;
@@ -29,21 +28,25 @@ export default function BookingWidget() {
   }, [selectedISO]);
 
   async function createCheckout(method: "card" | "sepa") {
-    if (!selectedISO) return alert("Veuillez sélectionner un créneau.");
+    if (!selectedISO) {
+      alert("Veuillez sélectionner un créneau.");
+      return;
+    }
     setIsSubmitting(true);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slotISO: selectedISO, method }),
+        body: JSON.stringify({ slotISO: selectedISO, method, offer }),
       });
-      if (!res.ok) throw new Error("Échec création Checkout");
-      const data = (await res.json()) as { url?: string };
-      if (!data.url) throw new Error("URL Checkout manquante");
+
+      const data: { url?: string } = await res.json();
+      if (!res.ok || !data.url) throw new Error("Échec création Checkout");
+
       window.location.href = data.url;
     } catch (e) {
-      const err = e as Error;
-      alert(err.message || "Erreur inattendue");
+      const err = e instanceof Error ? e : new Error("Erreur inattendue");
+      alert(err.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -60,10 +63,10 @@ export default function BookingWidget() {
         selectMirror
         allDaySlot={false}
         height="auto"
-        select={(info) => {
+        select={(info: DateSelectArg) => {
           // On force des créneaux d'1h
           const start = info.start;
-          const end = addMinutes(start, 60);
+          // const end = addMinutes(start, 60); // supprimé : inutilisé
           setSelectedISO(formatISO(start));
         }}
         headerToolbar={{
@@ -71,15 +74,14 @@ export default function BookingWidget() {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        // Option : injecter des événements "occupés" si vous en avez (Phase 2)
         events={async (info, success, failure) => {
           try {
             const qs = new URLSearchParams({ from: info.startStr, to: info.endStr });
             const res = await fetch(`/api/availability?${qs.toString()}`);
-            const data = (await res.json()) as { events: Event[] };
-            success(data.events);
+            const data: { events: Event[] } = await res.json();
+            success(data.events as EventInput[]);
           } catch (e) {
-            const err = e as Error;
+            const err = e instanceof Error ? e : new Error("Erreur chargement événements");
             failure(err);
           }
         }}
@@ -91,7 +93,7 @@ export default function BookingWidget() {
         </p>
         <div className="flex flex-wrap gap-2">
           <button
-            className="btn btn-primary"
+            className="btn btn-primary bg-brand-dark"
             disabled={!selectedISO || isSubmitting}
             onClick={() => createCheckout("card")}
             title="Paiement immédiat par carte"

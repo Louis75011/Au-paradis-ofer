@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3000",
-   "start:preprod": "next start -p 3001",
+    "start:preprod": "next start -p 3001",
     "cf:build": "next-on-pages",
     "cf:deploy": "wrangler pages deploy .vercel/output",
     "lint": "eslint",
