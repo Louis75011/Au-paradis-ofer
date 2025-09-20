@@ -25,7 +25,6 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 ## 📂 Structure réduite en exemple
 
 ```
-
 /au-paradis-ofer
 ├── frontend/        # Next.js (React/TS) + TailwindCSS + Storybook
 │   ├── public/      # images, icônes statiques
@@ -35,7 +34,6 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 │   ├── app/         # routes, schémas, modèles
 │   ├── alembic/     # migrations
 └── README.md
-
 ```
 
 ---
