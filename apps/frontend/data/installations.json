@@ -1,6 +1,18 @@
 {
-  "intro": "Nos installations évoluent : le manège semi-couvert, la sellerie, l’allée praticable et l’aire de pansage sont déjà opérationnels, tandis que l’accueil ou la chambre d'hôte sont en travaux.",
+  "intro": "Nos installations évoluent : l'accueil, le manège semi-couvert, la sellerie, l’allée praticable et l’aire de pansage sont déjà opérationnels, tandis que la chambre d'hôte est en travaux.",
   "elements": [
+    {
+      "id": "bureau-accueil",
+      "nom": "Bureau d'accueil",
+      "dimensions": "",
+      "photos": [
+        "/images/bureau-01.jpg",
+        "/images/bureau-02.jpg",
+        "/images/bureau-03.jpg"
+      ],
+      "statut": "disponible",
+      "resume": "Point d’accueil chaleureux et équipé : bureau, coin attente et documentation pratique pour les visiteurs. Espace pensé pour l’accueil, l’organisation des rendez-vous et la remise d’informations avant chaque séance."
+    },
     {
       "id": "manege",
       "nom": "Manège semi-couvert",
@@ -8,7 +20,7 @@
       "revetement": "sable",
       "photos": ["/images/installations-manege.jpg"],
       "statut": "disponible",
-      "resume": "Espace confortable pour des séances sereines, par tous les temps."
+      "resume": "Grand manège semi-couvert offrant une surface confortable et sécurisée pour les séances, utilisable par tous les temps. Sol en sable adapté au travail des chevaux et à la sécurité des participants."
     },
     {
       "id": "allee-praticable",
@@ -18,7 +30,7 @@
         "/images/alle-praticable-pour-tous02.jpg"
       ],
       "statut": "disponible",
-      "resume": "Chemin d’accès stabilisé et pensé pour la sécurité."
+      "resume": "Allée stabilisée et accessible qui facilite l’accès à l’ensemble des installations. Conçue pour la sécurité et le confort des visiteurs, y compris pour les personnes à mobilité réduite."
     },
     {
       "id": "sellerie",
@@ -29,28 +41,21 @@
         "/images/sellerie03.jpg"
       ],
       "statut": "disponible",
-      "resume": "Rangements, selles et harnachements organisés."
+      "resume": "Espace de sellerie bien organisé avec rangements pour selles et harnachements, permettant une préparation rapide et sécurisée des chevaux avant les séances."
     },
     {
       "id": "aire-pansage",
       "nom": "Aire de pansage",
       "photos": ["/images/aire-de-pansage.jpg"],
       "statut": "disponible",
-      "resume": "Zone dédiée à la préparation et aux soins."
-    },
-    {
-      "id": "accueil",
-      "nom": "Accueil",
-      "photos": [],
-      "statut": "en travaux bien avancés",
-      "resume": "Un point d’accueil chaleureux bientôt fonctionnel."
+      "resume": "Aire dédiée à la préparation et aux soins des chevaux, équipée pour le pansage, le brossage et les soins de base — conçue pour le confort des équidés et des soignants."
     },
     {
       "id": "gite",
       "nom": "Gîte",
       "photos": [],
       "statut": "en travaux",
-      "resume": "Un hébergement champêtre et bien équipé à terme."
+      "resume": "Gîte champêtre en projet : hébergement prévu pour prolonger l’expérience sur place, avec confort simple et mise en valeur du cadre naturel."
     }
   ]
 }

@@ -9,19 +9,19 @@ import { useState } from "react";
 type KnownRoute =
   | "/"
   | "/a-propos"
-  | "/tarifs"
   | "/chevaux"
-  | "/gites"
   | "/installations"
+  | "/tarifs"
+  | "/gites"
   | "/contact"
   | "/chiens";
 
 const navItems = [
   { href: "/a-propos", label: "À propos" },
-  { href: "/tarifs", label: "Séances" },
   { href: "/chevaux", label: "Nos chevaux" },
-  { href: "/gites", label: "Gîtes" },
   { href: "/installations", label: "Nos installations" },
+  { href: "/tarifs", label: "Séances" },
+  { href: "/gites", label: "Gîtes" },
   // { href: "/chiens",  label: "Chiens (à venir)" },
   { href: "/contact", label: "Contact" },
 ] as const satisfies ReadonlyArray<{ href: KnownRoute; label: string }>;

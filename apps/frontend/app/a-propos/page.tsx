@@ -8,14 +8,10 @@ export default function AboutPage() {
       <h1 className="text-3xl max-w-4xl font-bold text-brand-dark">À propos — Au Paradis O’Fer</h1>
 
       <p className="mt-4 max-w-4xl leading-relaxed">
-        Nichée au cœur des <strong>Hauts-de-France</strong>, notre structure{" "}
-        <em>Au Paradis O’Fer</em> est un havre de sérénité où la relation entre l’homme et le cheval
-        prend toute sa dimension. Ici, le rythme apaisé de la campagne se mêle au souffle des
-        crinières, offrant à chacun un moment de ressourcement authentique.
+        Nichée au cœur des <strong>Hauts-de-France</strong>, notre structure{" "} <em>Au Paradis O’Fer</em> est un havre de sérénité où la relation entre l’homme et le cheval prend toute sa dimension. Ici, le rythme apaisé de la campagne se mêle au souffle des crinières, offrant à chacun un moment de ressourcement authentique.
       </p>
       <p className="mt-4 max-w-4xl leading-relaxed">
-        Nous proposons des séances de <strong>médiation équine</strong> et des animations équestres
-        adaptées à tous les âges et à toutes les situations&nbsp;: enfants en quête de découverte,
+        Nous proposons des séances de <strong>médiation animale</strong> et des <strong>animations équestres</strong> adaptées à tous les âges et à toutes les situations&nbsp;: enfants en quête de découverte,
         adolescents désireux de gagner confiance, adultes et aînés recherchant détente et réconfort,
         ou encore personnes faisant face à des difficultés sociales ou de santé.
       </p>
@@ -25,7 +21,7 @@ export default function AboutPage() {
         pleinement l’instant présent, et à goûter la beauté simple de la nature.
       </p>
       <p className="mt-4 max-w-4xl leading-relaxed">
-        Notre site évolue&nbsp;: vous y trouverez prochainement un{" "}
+        Notre site évolue&nbsp;: vous y trouverez un{" "}
         <strong>calendrier interactif</strong>, des <strong>fiches pratiques</strong>, une{" "}
         <strong>galerie photo/vidéo</strong> et un <strong>espace de réservation en ligne</strong>{" "}
         pour faciliter votre venue.
@@ -33,6 +29,14 @@ export default function AboutPage() {
       <p className="mt-4 max-w-4xl leading-relaxed">
         Que vous veniez pour une initiation, un moment de bien-être ou un projet d’accompagnement,{" "}
         <em>Au Paradis O’Fer</em> vous accueille avec bienveillance et passion.
+      </p>
+      <p className="mt-4 max-w-4xl leading-relaxed">
+        — Pour en savoir plus sur la gestion des données personnelles et des cookies, 
+        vous pouvez consulter notre{" "}
+        <a href="/cookies" className="underline">
+          politique dédiée
+        </a>{" "}
+        conforme au <strong>RGPD</strong>.
       </p>
 
       <br></br><hr></hr>

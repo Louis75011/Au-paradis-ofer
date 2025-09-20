@@ -1,12 +1,9 @@
+// apps\frontend\app\installations\page.tsx
 import Image from "next/image";
 import SectionCard from "@/components/SectionCard";
 import installationsData from "@/data/installations.json";
 
-type Statut =
-  | "disponible"
-  | "à venir"
-  | "en travaux"
-  | "en travaux bien avancés";
+type Statut = "disponible" | "à venir" | "en travaux" | "en travaux bien avancés";
 
 type Installation = {
   id: string;
@@ -124,10 +121,11 @@ export default function PageInstallations() {
   const data = installationsData as Installations;
   const { intro, elements } = data;
 
-  // On privilégie l’ordre métier : manège d’abord, puis le reste dans l’ordre du JSON
+  // Bureau d'accueil en premier, ensuite manège, ensuite le reste (ordre JSON)
   const sorted = [
+    ...elements.filter((e) => e.id === "bureau-accueil"),
     ...elements.filter((e) => e.id === "manege"),
-    ...elements.filter((e) => e.id !== "manege"),
+    ...elements.filter((e) => e.id !== "bureau-accueil" && e.id !== "manege"),
   ];
 
   return (
@@ -140,17 +138,13 @@ export default function PageInstallations() {
       {sorted.map((it) => (
         <SectionCard key={it.id} title={TitleWithMeta(it)}>
           <div className="flex flex-col gap-5 md:flex-row md:items-start">
-            <PhotosGrid
-              photos={it.photos ?? []}
-              altBase={it.nom}
-              priority={it.id === "manege"}
-            />
+            <PhotosGrid photos={it.photos ?? []} altBase={it.nom} priority={it.id === "manege"} />
 
             <div className="min-w-0 space-y-3 relative z-10">
               {it.resume && <p className="opacity-90">{it.resume}</p>}
-              <p className="text-sm opacity-80">
+              {/* <p className="text-sm opacity-80">
                 Statut : <span className="font-semibold">{it.statut}</span>
-              </p>
+              </p> */}
             </div>
           </div>
         </SectionCard>

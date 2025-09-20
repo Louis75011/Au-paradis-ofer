@@ -8,8 +8,36 @@ RGPD/Cookies, paiements Stripe GITE (désactiver chevaux) calendriers pour Gîte
 <!-- vrai paramètre paiement carte + SEPA. Agenda Gîte à part et complet
 https://search.google.com/search-console/welcome?utm_source=wmx&utm_medium=deprecation-pane&utm_content=home#utm_source=fr-wmxmsg&utm_medium=wmxmsg&utm_campaign=bm&authuser=0 -->
 
-<!-- ssh ovh-vps -->
+<!-- ssh ovh-vps
+ssh root@51.68.230.93
+-->
 <!-- git add . ; git commit -m "package preprod et prod" ; git p ; git push origin preprod -->
+<!-- ssh -i ~/.ssh/id_rsa root@51.68.230.93 -->
+
+<!-- Google Agenda (ICS)
+Quand vous ajoutez un événement dans Google Agenda (“Gîte du 22 au 23”), ça apparaît dans l’ICS → et donc dans /api/availability/seance.
+Mais actuellement, vous ne traitez l’ICS que pour les séances.
+Les gîtes ne sont pas lus depuis ICS → logique, puisque vous voulez que ça passe par le paiement.
+👉 Donc ICS = planning des séances, qui peut être rempli à la main dans Google Calendar. -->
+
+; ; # santé générale
+; pm2 ls
+; pm2 logs --lines 50
+; # vérifiez les ports
+; ss -ltnp | grep -E ':3000|:3001' || true
+
+<!-- 7) Stripe & tests
+Dans Stripe (test) :
+Active Cards + SEPA (Settings → Payment methods).
+Crée deux Products : Gîte sans séance (95€) et Gîte + séance (130€).
+Récupère les Price IDs → mets-les dans l’ENV.
+Webhook (mode test) :
+Endpoint : /api/webhooks/stripe
+Events : checkout.session.completed
+Copie le STRIPE_WEBHOOK_SECRET.
+Cartes tests :
+CB : 4242 4242 4242 4242
+SEPA : DE89370400440532013000 (ok immédiat en test). -->
 
 ### Adresses
 
@@ -31,6 +59,8 @@ Préprod : preprod.au-paradis-ofer.fr → Nginx → 127.0.0.1:3001 → PM2 app a
 /root/deploy.sh preprod
 pm2 startup
 pm2 save -->
+
+<!--  -->
 
 <!-- wsl -d Debian12
 ssh root@51.68.230.93

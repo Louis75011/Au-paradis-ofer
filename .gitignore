@@ -47,3 +47,5 @@ _notes/
 # ecosystem
 apps/frontend/ecosystem.config.cjs
 apps/frontend/ecosystem.preprod.cjs
+
+.ignored_node_modules/

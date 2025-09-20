@@ -31,6 +31,20 @@ a:hover {
 
 .card { @apply rounded-2xl text-white shadow-[var(--shadow-soft)]; }
 
+/* BTN SEPA GITE */
+/* utilitaires rapides si Tailwind ne fournit pas déjà ces classes */
+.bg-brand-dark { background-color: var(--color-brand-dark) !important; color: white !important; }
+.bg-brand-light { background-color: var(--color-brand-light) !important; color: white !important; }
+.bg-brand-cream { background-color: var(--color-brand-cream) !important; }
+
+/* variante pour bouton SEPA (bord & padding repris du style .btn si besoin) */
+.btn-sepa-enabled {
+  background-color: var(--color-brand-light);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  /* si tu utilises des utilitaires, enlève ces règles et utilise @apply si configuré */
+}
+
 /* Cartes interactives : survol doux, retour fluide*/
 /* à terme remplacer par hover-button */
 .hover-button {
@@ -56,8 +70,19 @@ a:hover {
 }
 
 .btn { @apply inline-flex items-center justify-center rounded-full px-5 py-2 font-medium transition; }
-.btn-primary { @apply bg-[--color-brand-dark] text-white hover:opacity-90; }
+/* .btn-primary { @apply bg-[--color-brand-dark] text-white hover:opacity-90; } */
 .btn-ghost  { @apply bg-white/90 text-[--color-brand-dark] hover:bg-white; }
+
+.btn-primary {
+  background-color: var(--color-brand-dark, #376534);
+  color: var(--color-white, #fff);
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.btn-primary:hover {
+  background-color: #2f522e; /* nuance foncée au hover */
+}
 
 /* Barre de nav (desktop) : taille + espacement */
 .nav-bar { @apply flex items-center gap-5 md:gap-8 text-[0.98rem] md:text-[1.08rem]; }
@@ -80,6 +105,78 @@ a:hover {
 
 .badge-ghost {
   @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-white/85 text-[--color-brand-dark] ring-1 ring-black/10;
+}
+
+/* Calendrier */
+/* ==== FullCalendar tweaks ==== */
+
+/* global event style (timeGrid & dayGrid) */
+.fc .fc-event,
+.fc .fc-timegrid-event .fc-event-main,
+.fc .fc-daygrid-event .fc-event-main {
+  font-size: 0.90rem;
+  line-height: 1.15;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  white-space: normal; /* permet le retour à la ligne */
+  overflow: hidden;
+}
+
+/* time + title formatting */
+.fc .fc-event .fc-event-time {
+  display: block;
+  font-size: 0.78rem;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.95;
+}
+
+.fc .fc-event .fc-event-title {
+  display: block;
+  white-space: normal; /* autorise multi-lignes */
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* dayGrid (mois) : un peu plus compact */
+.fc .fc-daygrid-event {
+  padding: 4px 6px;
+  min-height: 34px;
+}
+
+/* timeGrid : s'assurer que le block prend la hauteur calculée */
+.fc .fc-timegrid-event .fc-event-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* gîte : style distinct (couleur, bord arrondi) */
+.fc .fc-event-gite {
+  background-color: #0ea5b7 !important; /* turquoise / visible */
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+/* si tu veux que le texte en-tête des jours soit mieux lisible */
+.fc .fc-col-header-cell-cushion {
+  background: var(--color-brand-dark, #376534);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-block; /* conserve le spacing naturel */
+}
+
+/* petites protections responsive */
+@media (max-width: 640px) {
+  .fc .fc-event .fc-event-time { font-size: 0.7rem; }
+  .fc .fc-event .fc-event-title { font-size: 0.85rem; }
 }
 
 /* Anim légère pour le carrousel */

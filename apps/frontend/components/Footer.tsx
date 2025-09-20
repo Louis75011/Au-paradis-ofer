@@ -1,9 +1,13 @@
 // apps/frontend/components/Footer.tsx
+"use client";
+
 import Link from "next/link";
 import tracts from "@/data/tracts.json";
+// import { useCookie } from "@/components/CookieContext";
 
 export default function Footer() {
   const { tel, mail, adresse } = tracts.coordonnees;
+  // const { openPrefs } = useCookie();
 
   return (
     <footer className="bg-brand-dark text-white">
@@ -19,10 +23,7 @@ export default function Footer() {
         <div>
           <p className="font-semibold py-2">Coordonnées</p>
           <p>
-            Tél :{" "}
-            <a href={`tel:${tel.replace(/\s/g, "")}`}>
-              {tel}
-            </a>
+            Tél : <a href={`tel:${tel.replace(/\s/g, "")}`}>{tel}</a>
           </p>
           <p>
             Email :{" "}
@@ -37,9 +38,7 @@ export default function Footer() {
         <div>
           <p className="font-semibold py-2">Horaires & Infos</p>
           <p className="opacity-90">Séances sur réservation • Accueil familial</p>
-          <p className="opacity-90">
-            En semaine, entre 9&nbsp;h et 18&nbsp;h
-          </p>
+          <p className="opacity-90">En semaine, entre 9&nbsp;h et 18&nbsp;h</p>
         </div>
 
         {/* RGPD */}
@@ -47,31 +46,19 @@ export default function Footer() {
           <p className="font-semibold py-2">RGPD & Légal</p>
           <ul className="mt-1 space-y-1">
             <li>
-              <Link href="/mentions-legales">
-                Mentions légales
-              </Link>
+              <Link href="/mentions-legales">Mentions légales</Link>
             </li>
             <li>
-              <Link href="/confidentialite">
-                Politique de confidentialité
-              </Link>
+              <Link href="/confidentialite">Politique de confidentialité</Link>
             </li>
             <li>
-              <Link href="/cookies">
-                Politique cookies
-              </Link>
+              <Link href="/cookies">Politique cookies</Link>
             </li>
-            <li>
-              {/* Ce bouton ouvrira votre modal CookiePrefs quand vous l’ajouterez */}
-              <button
-                type="button"
-               
-                data-cookieprefs-open="true"
-                aria-controls="cookieprefs-dialog"
-              >
+            {/* <li>
+              <button className="underline" onClick={openPrefs}>
                 Gérer mes cookies
               </button>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

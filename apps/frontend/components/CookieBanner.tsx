@@ -3,54 +3,68 @@
 
 import { useEffect, useState } from "react";
 
-const KEY = "apof_consent_v1";
+// type Prefs = {
+//   preferences: boolean;
+//   analytics: boolean;
+//   marketing: boolean;
+// };
+
+// const ALL_TRUE: Prefs = { preferences: true, analytics: true, marketing: true };
+// const ALL_FALSE: Prefs = { preferences: false, analytics: false, marketing: false };
+
+// function persistPrefs(p: Prefs) {
+//   localStorage.setItem("cookieprefs", JSON.stringify(p));
+//   // prévient tous les composants qui écoutent
+//   document.dispatchEvent(new CustomEvent("cookieprefs-saved", { detail: p }));
+// }
 
 export default function CookieBanner() {
-  const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !localStorage.getItem(KEY)) {
-      setShow(true);
-    }
+    const saved = localStorage.getItem("cookieprefs");
+    if (!saved) setVisible(true);
+
+    const handler = () => setVisible(false); // cache la bannière quand on reçoit l'événement
+    document.addEventListener("cookieprefs-saved", handler);
+    return () => document.removeEventListener("cookieprefs-saved", handler);
   }, []);
 
-  if (!show) return null;
+  function acceptAll() {
+    const prefs = { preferences: true, analytics: true, marketing: true };
+    localStorage.setItem("cookieprefs", JSON.stringify(prefs));
+    document.dispatchEvent(new CustomEvent("cookieprefs-saved", { detail: prefs }));
+    setVisible(false);
+  }
 
-  const set = (val: Record<string, boolean>) => {
-    localStorage.setItem(KEY, JSON.stringify(val));
-    setShow(false);
-  };
+  function refuseAll() {
+    const prefs = { preferences: false, analytics: false, marketing: false };
+    localStorage.setItem("cookieprefs", JSON.stringify(prefs));
+    document.dispatchEvent(new CustomEvent("cookieprefs-saved", { detail: prefs }));
+    setVisible(false);
+  }
+
+  function openPrefs() {
+    // ouvre via CustomEvent — CookiePrefsDialog écoute "open-cookieprefs"
+    document.dispatchEvent(new CustomEvent("open-cookieprefs"));
+  }
+
+  if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[min(95vw,880px)] bg-white p-3 rounded shadow">
+    <div className="fixed bottom-0 inset-x-0 z-50 bg-neutral-900 text-white px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <p className="text-sm">
-        Nous utilisons des cookies essentiels et, avec votre accord, des cookies
-        non essentiels. Vous pouvez refuser sans impact.
+        Nous utilisons des cookies essentiels et, avec votre accord, des cookies non essentiels.
+        Vous pouvez refuser sans impact.
       </p>
-      <div className="mt-2 flex gap-2 justify-end">
-        <button
-          onClick={() =>
-            set({ essential: true, analytics: false, media: false, marketing: false })
-          }
-        >
+      <div className="flex gap-2">
+        <button onClick={refuseAll} className="px-3 py-1 rounded border border-white text-sm">
           Tout refuser
         </button>
-        <button
-          onClick={() =>
-            set({ essential: true, analytics: true, media: true, marketing: true })
-          }
-        >
+        <button onClick={acceptAll} className="px-3 py-1 rounded bg-brand-dark text-sm">
           Tout accepter
         </button>
-        <button
-          onClick={() => {
-            setShow(false);
-            document
-              .querySelector('[data-cookieprefs-open="true"]')
-              ?.dispatchEvent(new Event("click", { bubbles: true }));
-          }}
-          className="underline"
-        >
+        <button onClick={openPrefs} className="px-3 py-1 rounded border border-white text-sm">
           Personnaliser
         </button>
       </div>

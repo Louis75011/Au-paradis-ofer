@@ -1,10 +1,10 @@
 "use client";
 import BookingCalendar from "@/components/BookingCalendar";
-// import { useState } from "react";
+import { useState } from "react";
 
 /** Formulaire de prise de contact simple — envoi vers l'API GraphQL du back. */
 export default function ContactPage() {
-  // const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [, setSelectedDate] = useState<string | null>(null);
 
   {
     /* <form className="mt-6 grid gap-4" onSubmit={onSubmit}> */
@@ -48,13 +48,13 @@ export default function ContactPage() {
       {/* Calendrier avec jours déjà réservés */}
       <br />
       <br />
-      <h2 className="text-3xl font-bold text-brand-dark">Calendrier des séances à venir</h2>
+      <h2 className="text-3xl font-bold text-brand-dark">Calendrier des séances à déterminer</h2>
         {/* Colonne droite : calendrier */}
         <div>
           <h2 className="mb-3 text-xl font-semibold">Dates disponibles</h2>
           <BookingCalendar onDateSelected={setSelectedDate} />
           <p className="mt-2 text-sm opacity-70">
-            Les créneaux réservés apparaitront dans le calendrier.
+            {/* Les créneaux réservés apparaitront dans le calendrier. */}
             {/* Cliquez sur un jour pour présélectionner une date. */}
           </p>
         </div>

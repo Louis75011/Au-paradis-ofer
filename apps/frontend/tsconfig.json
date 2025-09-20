@@ -4,7 +4,13 @@
     "target": "ES2022",
     "lib": ["ES2022", "DOM"],
     "jsx": "preserve",
-    "types": ["node", "@cloudflare/workers-types", "vitest/globals", "@testing-library/jest-dom"],
+    "types": [
+      "node",
+      "@cloudflare/workers-types",
+      "vitest/globals",
+      "@testing-library/jest-dom",
+      "./types/global"
+    ],
     "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,7 +26,7 @@
         "name": "next"
       }
     ],
-    "paths": { "@/*": ["./*"] },
+        "paths": { "@/*": ["./*"] },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/globals.scc"],
   "exclude": ["node_modules", ".next", "src/stories"]

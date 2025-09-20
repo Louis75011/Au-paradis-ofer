@@ -1,6 +1,8 @@
 // apps/frontend/app/cookies/page.tsx
 import Link from "next/link";
 import type { Metadata } from "next";
+import CookiePrefsOpener from "@/components/CookiePrefsOpener";
+// import CookiePrefsDialog from "@/components/CookiePrefsDialog";
 
 export const metadata: Metadata = {
   title: "Politique cookies – Au Paradis O’Fer",
@@ -24,19 +26,8 @@ export default function Page() {
 
       <h2>Gérer vos préférences</h2>
       <p>
-        <button
-          type="button"
-          className="underline"
-          data-cookieprefs-open="true"
-          aria-controls="cookieprefs-dialog"
-        >
-          Ouvrir le panneau de préférences
-        </button>
-      </p>
-
-      <p>
-        Vous pouvez également revenir à tout moment via le lien « Gérer mes cookies »
-        en pied de page.
+        {/* remplacez votre bouton HTML par le composant client */}
+        <CookiePrefsOpener />
       </p>
 
       <p>

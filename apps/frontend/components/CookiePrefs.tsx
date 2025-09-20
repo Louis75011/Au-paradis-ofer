@@ -1,58 +1,155 @@
-// CookiePrefs.tsx
+// apps/frontend/components/CookiePrefs.tsx
 "use client";
-import { useEffect, useState } from "react";
 
-type Cat = "essential" | "analytics" | "media" | "marketing";
+import React, { useEffect, useState } from "react";
+import { useCookie } from "./CookieContext";
+import { CookieCategories } from "../lib/cookieUtils";
 
-const STORAGE_KEY = "apof_consent_v1";
+/**
+ * On suppose CookieCategories similaire à :
+ * { necessary: boolean; preferences: boolean; analytics: boolean; marketing: boolean; }
+ */
+
+const DEFAULT_LOCAL: CookieCategories = {
+  necessary: true,
+  preferences: false,
+  analytics: false,
+  marketing: false,
+};
+
+function persistPrefsFromCategories(c: CookieCategories) {
+  // convertir au format front (sans necessary)
+  const prefs = {
+    preferences: !!c.preferences,
+    analytics: !!c.analytics,
+    marketing: !!c.marketing,
+  };
+  localStorage.setItem("cookieprefs", JSON.stringify(prefs));
+  document.dispatchEvent(new CustomEvent("cookieprefs-saved", { detail: prefs }));
+}
 
 export default function CookiePrefs() {
-  const [consent, setConsent] = useState<Record<Cat, boolean>>({
-    essential: true,    // toujours vrai
-    analytics: false,
-    media: false,
-    marketing: false,
-  });
-  const [open, setOpen] = useState(false);
+  const { consent, setConsent, closePrefs, isPrefsOpen } = useCookie();
+  const [local, setLocal] = useState<CookieCategories>(DEFAULT_LOCAL);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setConsent(JSON.parse(saved));
-  }, []);
+    if (consent) setLocal(consent);
+  }, [consent]);
 
-  const save = (c: typeof consent) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(c));
-    setConsent(c);
-    setOpen(false);
-    // Ici, (dés)activez vos scripts selon c.analytics / c.media / c.marketing
-  };
+  if (!isPrefsOpen) return null;
+
+  function toggle(k: keyof CookieCategories) {
+    if (k === "necessary") return;
+    setLocal((s: CookieCategories) => ({
+      ...s,
+      [k]: !s[k],
+    }));
+  }
+
+  function save() {
+    // mise à jour du contexte + persistance
+    setConsent(local);
+    persistPrefsFromCategories(local);
+    closePrefs();
+  }
+
+  function setAllFalse() {
+    const updated = { ...local, preferences: false, analytics: false, marketing: false };
+    setLocal(updated);
+    setConsent(updated);
+    persistPrefsFromCategories(updated);
+    closePrefs();
+  }
+
+  function setAllTrue() {
+    const updated = { ...local, preferences: true, analytics: true, marketing: true };
+    setLocal(updated);
+    setConsent(updated);
+    persistPrefsFromCategories(updated);
+    closePrefs();
+  }
 
   return (
-    <>
-      <button onClick={() => setOpen(true)} className="underline">
-        Gérer mes cookies
-      </button>
-      {open && (
-        <div role="dialog" aria-modal className="fixed inset-0 bg-black/40 flex items-center justify-center">
-          <div className="bg-white max-w-lg w-full p-4 rounded">
-            <h2 className="text-lg font-semibold mb-2">Préférences cookies</h2>
-            <p className="text-sm mb-3">
-              Nous utilisons des cookies essentiels au fonctionnement. Les autres catégories sont désactivées par défaut.
-            </p>
-            <ul className="space-y-2">
-              <li><label><input type="checkbox" checked disabled /> Essentiels (toujours actifs)</label></li>
-              <li><label><input type="checkbox" checked={consent.analytics} onChange={e => setConsent(c => ({...c, analytics: e.target.checked}))}/> Mesure d’audience</label></li>
-              <li><label><input type="checkbox" checked={consent.media} onChange={e => setConsent(c => ({...c, media: e.target.checked}))}/> Vidéos/embeds</label></li>
-              <li><label><input type="checkbox" checked={consent.marketing} onChange={e => setConsent(c => ({...c, marketing: e.target.checked}))}/> Marketing</label></li>
-            </ul>
-            <div className="mt-4 flex gap-2 justify-end">
-              <button onClick={() => save({ ...consent, analytics:false, media:false, marketing:false })}>Tout refuser</button>
-              <button onClick={() => save({ essential:true, analytics:true, media:true, marketing:true })}>Tout accepter</button>
-              <button onClick={() => save(consent)} className="font-semibold">Enregistrer</button>
+    <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40 p-4">
+      <div className="w-full max-w-3xl rounded-lg bg-white p-6 shadow-md">
+        <h3 className="text-xl font-semibold mb-3">Préférences cookies</h3>
+        <p className="mb-4 text-sm">Choisissez les catégories de cookies que vous autorisez.</p>
+
+        <div className="space-y-3">
+          <div className="flex items-start justify-between gap-4 p-3 border rounded">
+            <div>
+              <p className="font-semibold">Essentiels</p>
+              <p className="text-sm opacity-80">
+                Cookies nécessaires au fonctionnement du site. Toujours activés.
+              </p>
+            </div>
+            <div className="text-sm">Toujours</div>
+          </div>
+
+          <div className="flex items-start justify-between gap-4 p-3 border rounded">
+            <div>
+              <p className="font-semibold">Préférences</p>
+              <p className="text-sm opacity-80">Sauvegarde de réglages d&apos;affichage, langue, etc.</p>
+            </div>
+            <div>
+              <button
+                className={`btn ${local.preferences ? "btn-primary" : "btn-ghost"}`}
+                onClick={() => toggle("preferences")}
+              >
+                {local.preferences ? "Activé" : "Désactivé"}
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-start justify-between gap-4 p-3 border rounded">
+            <div>
+              <p className="font-semibold">Analytics</p>
+              <p className="text-sm opacity-80">Statistiques anonymes (ex: Google Analytics).</p>
+            </div>
+            <div>
+              <button
+                className={`btn ${local.analytics ? "btn-primary" : "btn-ghost"}`}
+                onClick={() => toggle("analytics")}
+              >
+                {local.analytics ? "Activé" : "Désactivé"}
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-start justify-between gap-4 p-3 border rounded">
+            <div>
+              <p className="font-semibold">Marketing</p>
+              <p className="text-sm opacity-80">Ciblage publicitaire et partage à des tiers.</p>
+            </div>
+            <div>
+              <button
+                className={`btn ${local.marketing ? "btn-primary" : "btn-ghost"}`}
+                onClick={() => toggle("marketing")}
+              >
+                {local.marketing ? "Activé" : "Désactivé"}
+              </button>
             </div>
           </div>
         </div>
-      )}
-    </>
+
+        <div className="mt-6 flex justify-end gap-3">
+          <button
+            className="btn"
+            onClick={setAllFalse}
+          >
+            Tout refuser
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={setAllTrue}
+          >
+            Tout accepter
+          </button>
+          <button className="btn" onClick={save}>
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
