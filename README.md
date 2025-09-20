@@ -32,7 +32,6 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 │   └── package.json
 ├── api/             # FastAPI + GraphQL backend
 │   ├── app/         # routes, schémas, modèles
-│   ├── alembic/     # migrations
 └── README.md
 ```
 
