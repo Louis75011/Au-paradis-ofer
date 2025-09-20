@@ -37,7 +37,6 @@
     "stripe": "^18.5.0"
   },
   "devDependencies": {
-    "": "link:/",
     "@chromatic-com/storybook": "4.1.1",
     "@cloudflare/next-on-pages": "^1.13.15",
     "@cloudflare/workers-types": "^4.20250903.0",

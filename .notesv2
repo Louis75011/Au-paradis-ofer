@@ -13,7 +13,11 @@ ssh root@51.68.230.93
 -->
 <!-- git add . ; git commit -m "package preprod et prod" ; git p
 cd /mnt/e/Projets/Au-paradis-ofer
-git push origin preprod -->
+git push origin preprod
+
+cat /var/www/au-paradis-ofer-preprod/.commit
+ss -ltnp | grep 3001
+ -->
 
 <!-- ssh -i ~/.ssh/id_rsa root@51.68.230.93 -->
 
