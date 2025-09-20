@@ -35,8 +35,6 @@ Ce dépôt contient l’architecture **front (Next.js)** et **API back (FastAPI 
 └── README.md
 ```
 
----
-
 ## ⚙️ Installation & Développement
 
 ### Prérequis
