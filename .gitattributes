@@ -1,0 +1,9 @@
+# Normaliser tous les fichiers texte en LF
+* text=auto eol=lf
+
+# Protéger certains formats binaires
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.pdf binary
