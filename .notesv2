@@ -11,7 +11,10 @@ https://search.google.com/search-console/welcome?utm_source=wmx&utm_medium=depre
 <!-- ssh ovh-vps
 ssh root@51.68.230.93
 -->
-<!-- git add . ; git commit -m "package preprod et prod" ; git p ; git push origin preprod -->
+<!-- git add . ; git commit -m "package preprod et prod" ; git p
+cd /mnt/e/Projets/Au-paradis-ofer
+git push origin preprod -->
+
 <!-- ssh -i ~/.ssh/id_rsa root@51.68.230.93 -->
 
 <!-- Google Agenda (ICS)

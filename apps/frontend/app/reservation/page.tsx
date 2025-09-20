@@ -9,7 +9,7 @@ export default function ReservationPage() {
         suffisamment lointaine.
       </p>
       <div className="mt-6">
-        <BookingWidget />
+        <BookingWidget offer="seance" />
       </div>
     </main>
   );
